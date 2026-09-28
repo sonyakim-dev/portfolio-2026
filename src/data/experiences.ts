@@ -22,14 +22,10 @@ export const HERO_EXPERIENCE: HeroCredit[] = [
 export type Experience = {
   role: string;
   company: string;
-  /** e.g. "Aug 2025 – Apr 2026" */
   period: string;
-  /** Team or product area, e.g. "Media Delivery Platform backend" */
   team?: string;
   location?: string;
-  /** One-line summary written by Sonya. Leave empty until then: the card shows a visible placeholder. */
   summary?: string;
-  /** A few bullet points: what you built, shipped or improved */
   highlights?: string[];
   tech?: TechKey[];
 };
@@ -37,40 +33,61 @@ export type Experience = {
 // Job history, newest first.
 export const EXPERIENCES: Experience[] = [
   // { role: "Software Engineer", company: "Linktree", period: "2026" },
-  { role: "Software Engineer", company: "?", period: "2026" },
+  { role: "Software Engineer", company: "?", team: "", period: "2026 - Current", location: "Remote" },
   {
     role: "Software Engineer",
     company: "Snap Inc.",
     period: "Aug 2025 – Apr 2026",
     team: "Media Delivery Platform Backend",
+    location: "Santa Monica, CA",
     tech: ["go", "java", "python", "aws", "gcp"],
-    summary: "",
+    highlights: [
+      "Developed a Video Quality Assessment (VQA) pipeline to support A/B testing for client-side Video Super-Resolution (VSR), enabling VSR model rollout that reduced video delivery costs while improving playback quality and user engagement.",
+      "Contributed to monetization infrastructure by enabling revenue attribution for subsidized ad content, extending a core media API to extract embedded partner metadata and restoring end-to-end validation across systems.",
+    ],
   },
   {
     role: "AI Studio Fellow",
     company: "Yardsworth",
     period: "Aug 2024 – Dec 2024",
+    location: "Remote",
     tech: ["python"],
+    highlights: [
+      "Designed an algorithm to compute the largest buildable rectangular area within residential lots using property data and satellite imagery, enabling scalable ADU (Accessory Dwelling Unit) feasibility analysis across Los Angeles County to help reduce mortgage burdens and address the housing crisis.",
+    ],
   },
   {
     role: "Software Engineer Intern",
     company: "Snap Inc.",
     period: "Jun 2024 - Sep 2024",
     team: "ML Inference Platform Backend",
+    location: "Santa Monica, CA",
     tech: ["python", "gcp"],
+    highlights: [
+      "Improved model search performance by optimizing filtering, sorting, and data migration on Google Cloud Datastore, significantly reducing lookup time for the latest models.",
+      "Proposed a scalable deployment pipeline for PyTorch models across GCP Kubernetes and AWS using Temporal for orchestration, and contributed to improving system reliability through testing and validation improvements.",
+    ],
   },
   {
     role: "Software Developer",
     company: "El Camino College",
     period: "Apr 2023 - Sep 2024",
+    location: "Remote",
     tech: ["python"],
+    highlights: [
+      "Built an automated assessment generator using Python (Matplotlib, SciPy) to create randomized problem sets, improving accessibility and reducing the cost of course materials for students.",
+    ],
   },
   {
     role: "Software Engineer Intern",
     company: "Snap Inc.",
     period: "May 2023 - Sep 2023",
     team: "Ads Business Platform Frontend",
+    location: "Santa Monica, CA",
     tech: ["react", "typescript"],
-    summary: "",
+    highlights: [
+      "Integrated contextual Business Help Center content into the Ads interface via Salesforce APIs, increasing ad setup completion rates and reducing support demand.",
+      "Developed a centralized platform page for codeless ad integrations and improved connected partner discovery using GraphQL-based filtering.",
+    ],
   },
 ];

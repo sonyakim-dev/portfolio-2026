@@ -41,7 +41,7 @@ export function ExperienceTicker({ className = "" }: { className?: string }) {
       </ul>
       <div
         aria-hidden="true"
-        className="microtype overflow-hidden text-xs [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] sm:text-[13px]"
+        className="microtype overflow-hidden text-xs mask-[linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] sm:text-[13px]"
       >
         <div className="flex w-max motion-safe:marquee">
           <Run />

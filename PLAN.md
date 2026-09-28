@@ -26,7 +26,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - **Palette:** powder blue, cloud white, cool silver, dark blue-gray text (`#525D72` for soft labels). Paper `#eeefed` around the framed hero. Accent: soft cobalt `#4657d6`, used sparingly (tagline `+`, hovers, focus rings).
 - **Ultra-wide:** the framed panel is capped at 1680px (frame margins grow) and the logo at 1100px; the frame still opens to full width on scroll.
 - **Type:** Bodoni Moda italic (poster serif only) · Geist (body; semibold project titles) · Geist Mono (uppercase microtype).
-- **Logo:** Sonya's chrome wordmark, split into 5 letters (S, o, n, y, a) so each floats independently. Real `<h1>` with `aria-label="Sonya Kim"`; letter images are decorative.
+- **Logo:** Sonya's chrome wordmark, split into 5 letters (S, o, n, y, a) so each floats independently. On desktop (real pointer, motion allowed) letters near the cursor are gently pushed away from it (GSAP `quickTo`, smoothstep falloff, ≤2% of the logo width, per-letter depth); sparkles move with their letter. Real `<h1>` with `aria-label="Sonya Kim"`; letter images are decorative.
 - **Sky:** `assets/sky-background.png` (→ `src/assets/sky.webp`) for the hero. The page below continues one sky gradient sampled from it (`#f7fafc` → `#b1d2ea` → `#a0c8e6` → `#c8dbe8`) behind the Work section and footer.
 - **Clouds:** `clouds-far` and `clouds-near` transparent layers for parallax and occlusion; `cloud-mist` scaled up plus a white overlay for the whiteout.
 - **No top nav** (only one section; the scroll cue and the social dock cover navigation).

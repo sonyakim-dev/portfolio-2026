@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Fantasy",
-    category: "Art Jewelry Design",
+    category: "Jewelry Design",
     tech: ["craft"],
     url: "https://sonyakim.squarespace.com/projects/jewelry-design",
     image: fantasy,

@@ -31,7 +31,7 @@ function HeaderLink({ label, href, icon }: { label: string; href: string; icon: 
       target="_blank"
       rel="noopener"
       aria-label={label}
-      className="relative grid size-8 place-items-center rounded-full border border-fg bg-fg text-paper transition-colors after:absolute after:-inset-1.5 hover:bg-transparent hover:text-fg sm:flex sm:size-auto sm:px-3 sm:py-[3px] sm:text-[11px] sm:after:-inset-x-2 sm:after:-inset-y-3"
+      className="relative grid size-8 place-items-center rounded-full border border-fg bg-fg text-paper transition-colors after:absolute after:-inset-1.5 hover:bg-transparent hover:text-fg sm:flex sm:size-auto sm:px-3 sm:py-0.75 sm:text-[11px] sm:after:-inset-x-2 sm:after:-inset-y-3"
     >
       <BrandIcon icon={icon} className="size-3.5 sm:hidden" />
       <span className="hidden sm:inline">{label}</span>
