@@ -12,7 +12,7 @@ export function ProjectCard({ project }: { project: Project }) {
       target="_blank"
       rel="noopener"
       aria-label={`${title}, ${category} (opens in a new tab)`}
-      className="group liquid grid gap-4 rounded-3xl p-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 focus-visible:outline-offset-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-7 lg:grid-cols-[320px_minmax(0,1fr)]"
+      className="group liquid-card grid gap-4 rounded-3xl p-3 focus-visible:outline-offset-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-7 lg:grid-cols-[320px_minmax(0,1fr)]"
     >
       <div className="aspect-video overflow-hidden rounded-2xl bg-line md:aspect-16/10 md:self-center">
         <img
@@ -26,7 +26,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-col justify-between gap-3 px-1.5 pb-1.5 md:py-1.5 md:pr-2 md:pl-0">
         <div className="flex items-center justify-between">
           <span className="microtype text-[11px] text-muted">{category}</span>
-          <span className="liquid grid size-8 place-items-center rounded-full md:size-9">
+          <span className="liquid-card grid size-8 place-items-center rounded-full md:size-9">
             <ArrowUpRight aria-hidden="true" strokeWidth={1.6} className="size-3.5 md:size-4" />
           </span>
         </div>

@@ -29,8 +29,10 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - **Logo:** Sonya's chrome wordmark, split into 5 letters (S, o, n, y, a) so each floats independently. On desktop (real pointer, motion allowed) letters near the cursor are gently pushed away from it (GSAP `quickTo`, smoothstep falloff, ≤2% of the logo width, per-letter depth); sparkles move with their letter. Real `<h1>` with `aria-label="Sonya Kim"`; letter images are decorative.
 - **Sky:** `assets/sky-background.png` (→ `src/assets/sky.webp`) for the hero. The page below continues one sky gradient sampled from it (`#f7fafc` → `#b1d2ea` → `#a0c8e6` → `#c8dbe8`) behind the Work section and footer.
 - **Clouds:** `clouds-far` and `clouds-near` transparent layers for parallax and occlusion; `cloud-mist` scaled up plus a white overlay for the whiteout.
+- Tech chips use half the original glass tint (25% white), a faint border, and fully opaque labels/icons.
 - **No top nav** (only one section; the scroll cue and the social dock cover navigation).
 - **Cards and dock:** liquid glass (translucent white, backdrop blur, luminous edge, soft shadow); text stays legible over bright areas via card tint.
+  - Cards use a dedicated `liquid-card` surface: subtle directional reflections (13–25% white), soft rim lighting, 10px backdrop blur, near-neutral saturation, and faint depth shadows. The border uses separate edge colors so an extra gradient does not compound opacity across the center. Experience inset panels use 10% white. Distant clouds sit behind both content sections. Card lift is limited to fine pointers with motion enabled; browsers without backdrop blur receive a solid sky tint. Dock keeps its original glass treatment.
 
 ## Content
 - Tagline: "Engineering + Linguistics + Art". Header microtype (desktop): "Sonya Kim · [LinkedIn] ↗ · Welcome to my world · ↙ [GitHub] · Portfolio" — links are solid black pills that invert on hover; mobile: "Sonya Kim" + round icon-only LinkedIn/GitHub buttons on the right.

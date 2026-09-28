@@ -40,7 +40,7 @@ const CENTER = Object.fromEntries(
 // Twinkling glints near the letters' highlights: position as a fraction of the letter box, size in cqw
 // (each is slightly blurred with a soft glow, both proportional to its size).
 const GLINTS: { char: Char; fx: number; fy: number; size: number; delay: number }[] = [
-  { char: "S", fx: 0.02, fy: 0.03, size: 7, delay: 0 },
+  { char: "S", fx: 0.02, fy: 0.03, size: 6, delay: 0 },
   { char: "o", fx: 0.6, fy: 0.4, size: 1.4, delay: 1.3 },
   { char: "a", fx: 0.9, fy: 0.04, size: 2, delay: 2.6 },
 ];

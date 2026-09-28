@@ -9,8 +9,8 @@ export function ExperienceCard({ job }: { job: Experience }) {
   const { role, company, period, team, location, summary, highlights, tech } = job;
   const written = summary?.trim();
   return (
-    <article className="group liquid grid gap-4 rounded-3xl p-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-7 lg:grid-cols-[320px_minmax(0,1fr)]">
-      <header className="flex flex-col justify-between gap-4 rounded-2xl border border-glass-edge bg-cloud/45 p-4 md:p-5">
+    <article className="group liquid-card grid gap-4 rounded-3xl p-3 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-7 lg:grid-cols-[320px_minmax(0,1fr)]">
+      <header className="flex flex-col justify-between gap-5 rounded-2xl border border-cloud/25 bg-cloud/10 p-4 md:p-5">
         <div className="space-y-1.5">
           <p className="text-xl leading-none font-semibold tracking-[-0.03em]">{company}</p>
           {team && <p className="text-sm leading-snug text-muted">{team}</p>}

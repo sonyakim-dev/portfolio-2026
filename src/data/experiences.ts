@@ -33,7 +33,14 @@ export type Experience = {
 // Job history, newest first.
 export const EXPERIENCES: Experience[] = [
   // { role: "Software Engineer", company: "Linktree", period: "2026" },
-  { role: "Software Engineer", company: "?", team: "", period: "2026 - Current", location: "Remote" },
+  {
+    role: "Software Engineer",
+    company: "?",
+    team: "",
+    period: "2026 - Current",
+    location: "Remote",
+    highlights: ["Ready to go. Coming soon."],
+  },
   {
     role: "Software Engineer",
     company: "Snap Inc.",
