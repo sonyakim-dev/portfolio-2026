@@ -220,7 +220,7 @@ export function SkyScene() {
               <ChromeName className="w-[min(86cqw,134cqh)] sm:w-[min(64cqw,130cqh,980px)]" />
             </div>
             <div data-tagline className="relative">
-              <Tagline className="px-4 text-center text-xs font-semibold tracking-wider text-soft uppercase opacity-80 sm:text-base sm:tracking-[0.08em]" />
+              <Tagline className="px-4 text-center text-sm font-semibold tracking-wider text-soft uppercase opacity-80 sm:text-base sm:tracking-[0.08em] lg:text-lg" />
             </div>
           </div>
 
