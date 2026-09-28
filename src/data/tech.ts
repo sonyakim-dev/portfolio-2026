@@ -5,14 +5,21 @@ import {
   siCss,
   siExpo,
   siFirebase,
+  siGo,
+  siGooglecloud,
   siHtml5,
   siJavascript,
   siMui,
+  siOpenjdk,
+  siPython,
   siReact,
   siShopify,
+  siTypescript,
   siUnity,
 } from 'simple-icons'
 
+import { siAmazonaws } from '../icons/aws'
+import { siCsharp } from '../icons/csharp'
 import { siAdobephotoshop } from '../icons/photoshop'
 
 export type Tech = {
@@ -24,22 +31,28 @@ export type Tech = {
 }
 
 // One place to map a project's tech keys to label + icon.
-// simple-icons removed C# and Photoshop at the brand owners' request: Photoshop's mark is kept
-// locally (src/icons/photoshop.ts); C# stays label-only.
+// simple-icons removed the C#, Photoshop and AWS marks at the brand owners' request; they are kept locally in
+// src/icons/. Java uses the OpenJDK mark (the coffee cup).
 export const TECH = {
   reactNative: { label: 'React Native', icon: siReact },
   react: { label: 'React', icon: siReact },
   expo: { label: 'Expo', icon: siExpo },
   firebase: { label: 'Firebase', icon: siFirebase },
   javascript: { label: 'JavaScript', icon: siJavascript },
+  typescript: { label: 'TypeScript', icon: siTypescript },
+  python: { label: 'Python', icon: siPython },
   mui: { label: 'MUI', icon: siMui },
   html: { label: 'HTML', icon: siHtml5 },
   css: { label: 'CSS', icon: siCss },
   cpp: { label: 'C++', icon: siCplusplus },
   unity: { label: 'Unity', icon: siUnity },
-  csharp: { label: 'C#' },
+  csharp: { label: 'C#', icon: siCsharp },
   shopify: { label: 'Shopify', icon: siShopify },
   photoshop: { label: 'Photoshop', icon: siAdobephotoshop },
+  go: { label: 'Go', icon: siGo },
+  java: { label: 'Java', icon: siOpenjdk },
+  aws: { label: 'AWS', icon: siAmazonaws },
+  gcp: { label: 'Google Cloud', icon: siGooglecloud },
   craft: { label: 'Handcraft', glyph: Hammer },
 } satisfies Record<string, Tech>
 

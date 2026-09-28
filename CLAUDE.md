@@ -1,7 +1,7 @@
 # Sonya Kim — Portfolio
 
 One-page cinematic portfolio: a framed poster sky with a floating chrome "Sonya" mark opens up, the camera passes through the clouds, and the clouds clear into project cards on the same sky.
-`PLAN.md` is the source of truth for scope, decisions and progress; read it first and keep it current. (`asset/PLAN.md` is an older reference, superseded by `PLAN.md`.)
+`PLAN.md` is the source of truth for scope, decisions and progress; read it first and keep it current. (`assets/PLAN.md` is an older reference, superseded by `PLAN.md`.)
 Design mockup: https://claude.ai/artifact/9w6GzV4DSVRmBcN9HFzzrT → page "B — Sky & chrome" (storyboard, desktop, mobile).
 
 ## Stack
@@ -17,12 +17,12 @@ Design mockup: https://claude.ai/artifact/9w6GzV4DSVRmBcN9HFzzrT → page "B —
 - `npm run build`: type-check and build for production
 
 ## Conventions
-- **Content is data:** projects live in `src/data/projects.ts` (`title`, `outcome`, `category`, `tech[]`, `url`, `image`). Edit the data, not the components, to change content. Never invent project claims; unwritten outcomes stay visibly marked as placeholders.
+- **Content is data:** projects live in `src/data/projects.ts` (`title`, `description`, `category`, `tech[]`, `url`, `image`); job history lives separately in `src/data/experiences.ts`: `HERO_EXPERIENCE` (short hero credits) and `EXPERIENCES` (detailed cards: `role`, `company`, `period`, `team`, `location`, `summary`, `highlights`, `tech`). Jobs and projects are unrelated lists. Edit the data, not the components, to change content. Never invent project claims; unwritten outcomes stay visibly marked as placeholders.
 - **Icons:** UI glyphs from `lucide-react`; tech/brand icons from `simple-icons` (`import { siReact } from 'simple-icons'`, render `path` in an `<svg viewBox="0 0 24 24" fill="currentColor">`). Map tech names to icons in one place (`src/data/tech.ts`).
 - **Colors:** light only. All colors are Tailwind tokens defined in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky tokens). Use those; never hex values or raw palette colors in components.
 - **Shared styles:** repeated visual recipes are Tailwind `@utility` classes in `src/index.css` (e.g. `liquid` for the glass look, `microtype` for uppercase mono labels), not copy-pasted class strings.
 - **Design tokens:** Bodoni Moda italic (poster serif only) · Geist (body; semibold for project titles, for legibility) · Geist Mono (uppercase microtype). Accent (cobalt) used sparingly: tagline `+`, hovers, focus rings.
-- **Assets:** optimized WebP/AVIF in `src/assets/` (sky, 5 chrome letters, far/near clouds); originals stay in `asset/`. Decorative images get `alt=""`/`aria-hidden`; the name is a real `<h1 aria-label="Sonya Kim">`.
+- **Assets:** optimized WebP in `src/assets/` (sky, 5 chrome letters, far/near clouds, mist); originals stay in `assets/`. Decorative images get `alt=""`/`aria-hidden`; the name is a real `<h1 aria-label="Sonya Kim">`.
 - **Motion:**
   - Animate only `transform`, `opacity` and `clip-path`. Use `100dvh` for the pinned viewport.
   - CSS for idle loops (per-letter bob/sway, twinkles) and hovers; GSAP for anything scroll-driven, sequenced, or enter/exit.
@@ -31,7 +31,7 @@ Design mockup: https://claude.ai/artifact/9w6GzV4DSVRmBcN9HFzzrT → page "B —
   - Hover-only effects go inside `@media (hover: hover) and (pointer: fine)`.
   - Motion should feel smooth like drifting air: gentle eases, no bounce.
 - **Accessibility:**
-  - Use real `<a>` and `<button>` elements; the `#work` anchor must work by keyboard and direct link.
+  - Use real `<a>` and `<button>` elements; the `#experience` and `#projects` anchors must work by keyboard and direct link.
   - Icon-only controls get an `aria-label`.
   - Touch targets are at least 44px; focus states are visible.
   - External links use `target="_blank" rel="noopener"`.

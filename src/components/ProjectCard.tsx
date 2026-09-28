@@ -1,11 +1,11 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from "lucide-react";
 
-import type { Project } from '../data/projects'
-import { TechChip } from './TechChip'
+import type { Project } from "../data/projects";
+import { TechChip } from "./TechChip";
 
 /** One project per row: image, then category, title, outcome and stack. The whole card is the link. */
 export function ProjectCard({ project }: { project: Project }) {
-  const { title, outcome, category, tech, url, image } = project
+  const { title, description: outcome, category, tech, url, image } = project;
   return (
     <a
       href={url}
@@ -35,8 +35,8 @@ export function ProjectCard({ project }: { project: Project }) {
           <h3 className="text-2xl leading-tight font-semibold tracking-[-0.03em] transition-colors group-hover:text-accent md:text-4xl">
             {title}
           </h3>
-          <p className={`text-sm leading-snug md:text-base ${outcome ? 'text-fg' : 'text-muted italic'}`}>
-            {outcome ?? '[One-line outcome — to be written]'}
+          <p className={`text-sm leading-snug md:text-base ${outcome ? "text-fg" : "text-muted italic"}`}>
+            {outcome ?? ""}
           </p>
         </div>
 
@@ -47,5 +47,5 @@ export function ProjectCard({ project }: { project: Project }) {
         </ul>
       </div>
     </a>
-  )
+  );
 }

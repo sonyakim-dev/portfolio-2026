@@ -13,7 +13,7 @@
   --color-line: rgb(17 19 23 / 0.18);
   --color-accent: #4657d6;
 
-  /* sky sampled from asset/sky-background.png, used for the continuous page background */
+  /* sky sampled from assets/sky-background.png, used for the continuous page background */
   --color-sky-50: #f7fafc;
   --color-sky-100: #e6f0f8;
   --color-sky-200: #cde1f1;

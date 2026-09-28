@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import { Sparkle } from "lucide-react";
 
-import { EXPERIENCE } from "../data/profile";
+import { HERO_EXPERIENCE } from "../data/experiences";
 
 // Enough copies that one half of the track is wider than any screen, so the loop never shows a gap.
-const COPIES = Math.max(2, Math.ceil(8 / EXPERIENCE.length));
-const RUN = Array.from({ length: COPIES }, () => EXPERIENCE).flat();
+const COPIES = Math.max(2, Math.ceil(8 / HERO_EXPERIENCE.length));
+const RUN = Array.from({ length: COPIES }, () => HERO_EXPERIENCE).flat();
 
 function Run() {
   return (
@@ -33,7 +33,7 @@ export function ExperienceTicker({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
       <ul className="sr-only">
-        {EXPERIENCE.map((job, i) => (
+        {HERO_EXPERIENCE.map((job, i) => (
           <li key={i}>
             {job.role} at {job.company}, {job.year}
           </li>

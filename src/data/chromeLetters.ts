@@ -1,13 +1,14 @@
-// Placement of each chrome letter inside the "Sonya" wordmark, in source-image pixels
-// (measured when the wordmark in asset/sonya.png was split into letters).
+// Placement of each chrome letter inside the "Sonya" wordmark, in the coordinates of assets/sonya.png.
+// The letter images are the v2 cutouts (assets/sonya-letters-v2), each registered onto the original
+// wordmark (best overlap over scale × position), so the logo keeps its original composition.
 // Scale by renderedWidth / WORD_WIDTH.
-export const WORD_WIDTH = 1646
-export const WORD_HEIGHT = 756
+export const WORD_WIDTH = 1617;
+export const WORD_HEIGHT = 748;
 
 export const LETTERS = [
-  { char: 'S', x: -1, y: -1, w: 555, h: 680 },
-  { char: 'o', x: 428, y: 238, w: 278, h: 334 },
-  { char: 'n', x: 674, y: 225, w: 320, h: 335 },
-  { char: 'y', x: 929, y: 202, w: 361, h: 555 },
-  { char: 'a', x: 1249, y: 181, w: 398, h: 331 },
-] as const
+  { char: "S", x: 0, y: 0, w: 527, h: 667 },
+  { char: "o", x: 407, y: 246, w: 282, h: 321 },
+  { char: "n", x: 653, y: 230, w: 384, h: 286 },
+  { char: "y", x: 911, y: 230, w: 352, h: 518 },
+  { char: "a", x: 1220, y: 199, w: 397, h: 299 },
+] as const;

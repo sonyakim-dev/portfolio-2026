@@ -9,7 +9,7 @@ import { BrandIcon } from "./BrandIcon";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
- * Floating glass pill with LinkedIn + GitHub. It slides up once the Work section is on screen
+ * Floating glass pill with LinkedIn + GitHub. It slides up once the content below the hero (Experience) is on screen
  * and hides again back in the hero (where the header already has the links).
  * Icons only on phones; reduced motion shows/hides it instantly.
  */
@@ -31,7 +31,7 @@ export function SocialDock() {
     );
 
     ScrollTrigger.create({
-      trigger: "#work",
+      trigger: "#experience",
       start: "top 75%",
       end: "max",
       onToggle: (self) => show(self.isActive),

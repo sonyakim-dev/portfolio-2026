@@ -48,7 +48,7 @@ function HeaderLink({ label, href, icon }: { label: string; href: string; icon: 
  *
  * Scrolling pins this section and scrubs one timeline: the frame opens → the camera approaches →
  * near clouds pass in front of the name → whiteout. The wash is the same color as the top of the
- * Work section, so the pin releases into it with no seam. Reduced motion keeps the static hero.
+ * content below (Experience, then Projects), so the pin releases into it with no seam. Reduced motion keeps the static hero.
  */
 export function SkyScene() {
   const root = useRef<HTMLElement>(null);
@@ -74,14 +74,14 @@ export function SkyScene() {
         },
         (ctx) => {
           const mobile = Boolean(ctx.conditions?.mobile);
-          // The scene stays pinned for `screens` viewport heights. During the last screen the Work section
+          // The scene stays pinned for `screens` viewport heights. During the last screen the content below (Experience + Projects)
           // rises over it, starting at timeline time WORK_ENTERS — while the near clouds are still passing,
           // so the list emerges out of the clouds. A soft white gradient on top of Work (only shown while
           // this scene is active) keeps that edge misty instead of a hard line.
           const screens = mobile ? 1.7 : 2.2;
           const WORK_ENTERS = 5.5;
           gsap.set("[data-pin-spacer]", { height: `${(screens - 1) * 100}dvh` });
-          gsap.set(document.querySelector("[data-work-fade]"), { display: "block" });
+          gsap.set(document.querySelector("[data-content-fade]"), { display: "block" });
 
           const tl = gsap.timeline({
             defaults: { ease: "none" },
@@ -99,13 +99,22 @@ export function SkyScene() {
           // 01 → 02  The frame opens; poster type and chrome fade away.
           tl.fromTo("[data-sky]", { clipPath: frameInset }, { clipPath: "inset(0px 0px 0px 0px)", duration: 1.5 }, 0)
             .to("[data-sky-img]", { scale: 1.06, duration: 1.5 }, 0)
-            .to(["[data-header]", "[data-footer-block]", "[data-serif]", "[data-cue]"], { autoAlpha: 0, duration: 0.8 }, 0)
+            .to(
+              ["[data-header]", "[data-footer-block]", "[data-serif]", "[data-cue]"],
+              { autoAlpha: 0, duration: 0.8 },
+              0,
+            )
 
             // 03  Approach: the mark grows a little; far and near clouds rise at different speeds.
             .to("[data-tagline]", { autoAlpha: 0, duration: 1 }, 1.5)
             .to("[data-name]", { scale: 1.2, yPercent: -6, duration: 3 }, 1.5)
             .to("[data-sky-img]", { scale: 1.2, duration: 3 }, 1.5)
-            .fromTo("[data-far]", { autoAlpha: 0, yPercent: 35 }, { autoAlpha: 1, yPercent: 0, scale: 1.15, duration: 3 }, 1.5)
+            .fromTo(
+              "[data-far]",
+              { autoAlpha: 0, yPercent: 35 },
+              { autoAlpha: 1, yPercent: 0, scale: 1.15, duration: 3 },
+              1.5,
+            )
             .fromTo("[data-near]", { yPercent: 0 }, { yPercent: mobile ? -55 : -40, duration: 3 }, 1.5)
 
             // 04  Through the clouds: the near layer passes in front of the mark.
@@ -115,7 +124,12 @@ export function SkyScene() {
             .to("[data-name]", { scale: 1.4, autoAlpha: 0.35, duration: 2.5 }, 4.5)
 
             // 05  Whiteout: dense mist fills the view, then the wash.
-            .fromTo("[data-mist]", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: mobile ? 3.2 : 2.6, duration: 1.7 }, 6.3)
+            .fromTo(
+              "[data-mist]",
+              { autoAlpha: 0, scale: 1.2 },
+              { autoAlpha: 1, scale: mobile ? 3.2 : 2.6, duration: 1.7 },
+              6.3,
+            )
             .to("[data-near]", { scale: mobile ? 3.2 : 2.4, duration: 1.7 }, 6.8)
             .to("[data-name]", { autoAlpha: 0, duration: 1 }, 6.8)
             .fromTo("[data-wash]", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 }, 7)
@@ -203,7 +217,7 @@ export function SkyScene() {
           {/* Tagline hangs just under the name; the gap is larger than the letters' float. */}
           <div className="absolute inset-x-0 top-[28%] flex flex-col items-center gap-[3cqw] sm:top-[20%] sm:gap-[0.4cqw]">
             <div data-name className="flex w-full origin-[50%_60%] justify-center will-change-transform">
-              <ChromeName className="w-[min(94cqw,146cqh)] sm:w-[min(72cqw,146cqh,1100px)]" />
+              <ChromeName className="w-[min(86cqw,134cqh)] sm:w-[min(64cqw,130cqh,980px)]" />
             </div>
             <div data-tagline className="relative">
               <Tagline className="px-4 text-center text-xs font-semibold tracking-wider text-soft uppercase opacity-80 sm:text-base sm:tracking-[0.08em]" />

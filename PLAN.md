@@ -2,7 +2,7 @@
 
 Direction chosen: **B — Sky & chrome**. The site should feel like the opening of a short film: a framed poster sky opens up, the camera drifts toward the floating chrome **Sonya** mark, passes through the clouds, and the clouds clear into the project list on the same sky.
 Mockup (storyboard + desktop + mobile): https://claude.ai/artifact/9w6GzV4DSVRmBcN9HFzzrT → page "B — Sky & chrome".
-This file merges and supersedes `asset/PLAN.md` (kept only as a reference).
+This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 
 ## Requirements
 - One-page portfolio, responsive and mobile-friendly. Vite + React + TypeScript.
@@ -27,7 +27,7 @@ This file merges and supersedes `asset/PLAN.md` (kept only as a reference).
 - **Ultra-wide:** the framed panel is capped at 1680px (frame margins grow) and the logo at 1100px; the frame still opens to full width on scroll.
 - **Type:** Bodoni Moda italic (poster serif only) · Geist (body; semibold project titles) · Geist Mono (uppercase microtype).
 - **Logo:** Sonya's chrome wordmark, split into 5 letters (S, o, n, y, a) so each floats independently. Real `<h1>` with `aria-label="Sonya Kim"`; letter images are decorative.
-- **Sky:** `asset/sky-background.png` (→ `src/assets/sky.webp`) for the hero. The page below continues one sky gradient sampled from it (`#f7fafc` → `#b1d2ea` → `#a0c8e6` → `#c8dbe8`) behind the Work section and footer.
+- **Sky:** `assets/sky-background.png` (→ `src/assets/sky.webp`) for the hero. The page below continues one sky gradient sampled from it (`#f7fafc` → `#b1d2ea` → `#a0c8e6` → `#c8dbe8`) behind the Work section and footer.
 - **Clouds:** `clouds-far` and `clouds-near` transparent layers for parallax and occlusion; `cloud-mist` scaled up plus a white overlay for the whiteout.
 - **No top nav** (only one section; the scroll cue and the social dock cover navigation).
 - **Cards and dock:** liquid glass (translucent white, backdrop blur, luminous edge, soft shadow); text stays legible over bright areas via card tint.
@@ -35,10 +35,10 @@ This file merges and supersedes `asset/PLAN.md` (kept only as a reference).
 ## Content
 - Tagline: "Engineering + Linguistics + Art". Header microtype (desktop): "Sonya Kim · [LinkedIn] ↗ · Welcome to my world · ↙ [GitHub] · Portfolio" — links are solid black pills that invert on hover; mobile: "Sonya Kim" + round icon-only LinkedIn/GitHub buttons on the right.
 - Experience: a single credits-style ticker along the bottom of the frame, drifting right → left forever (CSS `marquee`, stopped under reduced motion); role **bold**, year in Bodoni italic. The bottom strip matches the header height, so the frame is symmetric.
-- Experience entries live in `src/data/profile.ts` (`EXPERIENCE`).
+- Experience lives in `src/data/experiences.ts` as two independent lists: `HERO_EXPERIENCE` (short credits for the hero ticker: role, company, year) and `EXPERIENCES` (detailed cards in the **Experience** section before Selected work: role, company, period, optional team, location, summary, highlights, tech). Experience cards share the project card's shell and grid, with an inset panel (company, team, period, location) in place of the image and no link. Jobs and projects are separate.
 - Bio: not shown anywhere since About was removed.
 - Links: LinkedIn https://www.linkedin.com/in/sonya-kim · GitHub https://github.com/sonyakim-dev · email TBD.
-- Projects: the 10 from the old site (`src/data/projects.ts`); stacks from each repo's package.json / GitHub languages; Target VR = Unity + C#; the craft pieces = "Handcraft". simple-icons removed the LinkedIn, Photoshop and C# logos at the brands' request: LinkedIn and Photoshop marks are kept locally in `src/icons/`; C# is label-only. One-line outcomes are **placeholders** until Sonya writes them; never invent claims.
+- Projects: the 10 from the old site (`src/data/projects.ts`); stacks from each repo's package.json / GitHub languages; Target VR = Unity + C#; the craft pieces = "Handcraft". simple-icons removed the LinkedIn, Photoshop and C# logos at the brands' request: LinkedIn, Photoshop, C# and AWS marks are kept locally in `src/icons/`; Java uses the OpenJDK mark. One-line outcomes are **placeholders** until Sonya writes them; never invent claims.
 
 ## Architecture
 - Vite + React + TS. No UI kit, router or state library.
@@ -51,9 +51,9 @@ This file merges and supersedes `asset/PLAN.md` (kept only as a reference).
   | `lucide-react` | UI icons (arrow, hammer, chevron) |
   | `simple-icons` | Brand/tech icons, tree-shaken |
   | `@fontsource-variable/{bodoni-moda,geist,geist-mono}` | Self-hosted fonts |
-- **Components:** `SkyScene` (framed hero + pinned timeline + cloud layers), `ChromeName` (5 letter images with CSS bob/sway), `Tagline`, `SocialPill`, `WorkSection` + `ProjectCard`, `SocialDock`.
+- **Components:** `SkyScene` (framed hero + pinned timeline + cloud layers), `ChromeName` (5 letter images with CSS bob/sway), `Tagline`, `SocialPill`, `ExperienceSection` (+ `ExperienceCard`), `ProjectSection` + `ProjectCard`, `SocialDock`.
 - **Motion rules:** animate only `transform`, `opacity` and `clip-path`; `100dvh` for the pinned viewport; CSS for idle loops (letter float, twinkles), GSAP for everything scroll-driven. `gsap.matchMedia()`: a desktop timeline, a shorter mobile timeline with fewer/lighter layers, and no pin or scrub under `prefers-reduced-motion` (static hero, then the list).
-- **Assets:** `src/assets/` holds optimized WebP: `sky.webp` (from `asset/sky-background.png`), `sonya/{S,o,n,y,a}.webp`, `clouds-far.webp`, `clouds-near.webp`, `cloud-mist.webp` (whiteout layer), and `projects/*.webp` (≤1200px). Letter placement lives in `src/data/chromeLetters.ts`. Originals stay in `asset/`. `sonya.png` had a baked-in checkerboard, so the letters were cut out and split in the mockup (scratch script); swap in a real transparent export if one becomes available.
+- **Assets:** `src/assets/` holds optimized WebP: `sky.webp` (from `assets/sky-background.png`), `sonya/{S,o,n,y,a}.webp`, `clouds-far.webp`, `clouds-near.webp`, `cloud-mist.webp` (whiteout layer), and `projects/*.webp` (≤1200px). Letter placement lives in `src/data/chromeLetters.ts`. Originals stay in `assets/`. The chrome letters come from the transparent v2 cutouts in `assets/sonya-letters-v2/`, each registered onto the original `assets/sonya.png` wordmark (best overlap over scale × position) so the logo keeps its composition; exported at 2× the logo's max width.
 - **Tests:** minimal; no component/snapshot tests. Check with `npm run build` and by running the app.
 - **Deploy:** Netlify (static `dist/`).
 
@@ -67,11 +67,15 @@ This file merges and supersedes `asset/PLAN.md` (kept only as a reference).
    - Near clouds, mist and a `sky-50` wash sit in front of the name; the wash matches the top of the Work section, so the pin releases with no seam (Work overlaps the scene by 1px to hide a compositor hairline).
    - Reduced motion: no pin or scrub, static hero, then the list.
 5. [x] `SocialDock` (appears once Work is in view), focus states, meta/OG tags, favicon
-   - Dock: GSAP ScrollTrigger on `#work` (`top 75%` → end of page) toggles a glass pill; icons only on phones; instant under reduced motion.
+   - Dock: GSAP ScrollTrigger on `#experience` (the first section below the hero; `top 75%` → end of page) toggles a glass pill; icons only on phones; instant under reduced motion.
    - Focus: cobalt `:focus-visible` ring verified with real Tab presses (header links → cards → dock).
    - `public/`: `favicon.png` (chrome S), `apple-touch-icon.png` (S on sky), `og.jpg` (1200×630 hero). Make `og:image` absolute once the domain is known.
    - No in-page anchors needed beyond "Back to top" (no nav by design).
-6. [ ] Check desktop/mobile, keyboard, reduced motion, scroll performance, asset sizes; deploy to Netlify
+6. [x] Check desktop/mobile, keyboard, reduced motion, scroll performance, asset sizes; deploy to Netlify
+   - Production build (`vite preview`): no console errors, CLS ≈ 0, no horizontal overflow at 390 / 1440 / 3440 px; scrolling down and back up fully restores the hero.
+   - `dist/` 2.2 MB; JS 124 KB gz (React + GSAP; simple-icons tree-shaken to the 11 icons used); CSS 8 KB gz.
+   - Deployed from GitHub `sonyakim-dev/portfolio-2026` → Netlify (`netlify.toml`: `npm run build`, `dist`, Node 22).
+   - Remaining: make `og:image` absolute once the site URL is confirmed; feel-check scroll pacing on real devices.
 
 ## Open content (needed from Sonya)
 - One-line outcome per project

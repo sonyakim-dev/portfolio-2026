@@ -1,10 +1,10 @@
-import cloudsFar from '../assets/clouds-far.webp'
-import { PROJECTS } from '../data/projects'
-import { ProjectCard } from './ProjectCard'
+import cloudsFar from "../assets/clouds-far.webp";
+import { PROJECTS } from "../data/projects";
+import { ProjectCard } from "./ProjectCard";
 
-export function WorkSection() {
+export function ProjectSection() {
   return (
-    <section id="work" aria-labelledby="work-heading" className="relative px-4 pt-8 pb-24 sm:px-8 sm:pt-12 lg:px-16">
+    <section id="projects" aria-labelledby="projects-heading" className="relative px-4 pt-8 pb-24 sm:px-8 sm:pt-12 lg:px-16">
       {/* a few distant clouds drifting behind the cards */}
       <img
         src={cloudsFar}
@@ -21,8 +21,8 @@ export function WorkSection() {
 
       <div className="relative mx-auto max-w-[1312px]">
         <div className="microtype mb-8 flex justify-between border-b border-line pb-3 text-[11px] sm:mb-14 sm:pb-4 sm:text-xs">
-          <h2 id="work-heading" className="font-[inherit]">
-            Selected work
+          <h2 id="projects-heading" className="font-[inherit]">
+            Projects
           </h2>
           <span>({PROJECTS.length})</span>
         </div>
@@ -36,5 +36,5 @@ export function WorkSection() {
         </ul>
       </div>
     </section>
-  )
+  );
 }
