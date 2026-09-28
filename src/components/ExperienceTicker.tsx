@@ -15,7 +15,7 @@ function Run() {
           <span className="flex items-baseline gap-2.5 px-6 whitespace-nowrap sm:gap-3 sm:px-10">
             <span className="font-bold">{job.role}</span>
             <span>@ {job.company}</span>
-            <span className="font-display text-[1.25em] tracking-normal normal-case italic">{job.year}</span>
+            <span className="font-sans tracking-normal normal-case italic">{job.year}</span>
           </span>
           <Sparkle aria-hidden="true" fill="currentColor" strokeWidth={0} className="size-2.5 shrink-0 text-soft" />
         </Fragment>

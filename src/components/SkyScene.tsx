@@ -1,8 +1,4 @@
 import { useRef, type MouseEvent } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDownLeft, ArrowUpRight, ChevronDown, Sparkle } from "lucide-react";
 
 import cloudMist from "../assets/cloud-mist.webp";
@@ -10,14 +6,11 @@ import cloudsFar from "../assets/clouds-far.webp";
 import cloudsNear from "../assets/clouds-near.webp";
 import sky from "../assets/sky.webp";
 import { SOCIAL_LINKS } from "../data/profile";
+import { gsap, useGSAP } from "../lib/gsap";
 import { BrandIcon } from "./BrandIcon";
 import { ChromeName } from "./ChromeName";
 import { ExperienceTicker } from "./ExperienceTicker";
 import { Tagline } from "./Tagline";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
-// Don't recalculate (and jump) when a phone's address bar shows/hides.
-ScrollTrigger.config({ ignoreMobileResize: true });
 
 const [linkedin, github] = SOCIAL_LINKS;
 
@@ -32,7 +25,7 @@ function HeaderLink({ label, href, icon }: { label: string; href: string; icon: 
       target="_blank"
       rel="noopener"
       aria-label={label}
-      className="relative grid size-8 place-items-center rounded-full border border-fg bg-fg text-paper transition-colors after:absolute after:-inset-1.5 hover:bg-transparent hover:text-fg sm:flex sm:size-auto sm:px-3 sm:py-0.75 sm:text-[11px] sm:after:-inset-x-2 sm:after:-inset-y-3"
+      className="relative grid size-8 place-items-center rounded-full border border-fg bg-fg text-paper transition-colors duration-500 ease-drift after:absolute after:-inset-1.5 hover:bg-transparent hover:text-fg sm:flex sm:size-auto sm:px-3 sm:py-0.75 sm:text-[11px] sm:after:-inset-x-2 sm:after:-inset-y-3"
     >
       <BrandIcon icon={icon} className="size-3.5 sm:hidden" />
       <span className="hidden sm:inline">{label}</span>
@@ -160,7 +153,7 @@ export function SkyScene() {
       target.scrollIntoView({ behavior: reduce ? "instant" : "smooth", block: "start" });
       return;
     }
-    gsap.to(window, { scrollTo: { y: target, autoKill: true }, duration: reduce ? 0 : 2.2, ease: "power2.inOut" });
+    gsap.to(window, { scrollTo: { y: target, autoKill: true }, duration: 2.2, ease: "power2.inOut" });
   });
 
   return (
@@ -246,7 +239,7 @@ export function SkyScene() {
             data-cue
             href="#experience"
             onClick={enter}
-            className="microtype absolute inset-x-0 bottom-5 mx-auto flex w-fit items-center justify-center gap-1.5 text-[12px] text-cloud [text-shadow:0_1px_2px_rgb(30_45_65/0.55),0_2px_12px_rgb(40_60_85/0.6)] motion-safe:nudge min-h-11 rounded-full px-3"
+            className="microtype absolute inset-x-0 bottom-5 mx-auto flex w-fit items-center justify-center gap-1.5 text-xs text-cloud [text-shadow:0_1px_2px_rgb(30_45_65/0.55),0_2px_12px_rgb(40_60_85/0.6)] motion-safe:nudge min-h-11 rounded-full px-3"
           >
             <ChevronDown
               aria-hidden="true"

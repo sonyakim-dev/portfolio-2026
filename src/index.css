@@ -30,6 +30,9 @@
   --color-glass-reflection: rgb(255 255 255 / 0.25);
   --color-glass-rim: rgb(255 255 255 / 0.32);
   --color-glass-shade: rgb(66 99 126 / 0.04);
+  /* gentle, no-bounce ease for hovers and lifts ("drifting air") */
+  --ease-drift: cubic-bezier(0.22, 1, 0.36, 1);
+
   --shadow-glass-card: 0 16px 40px -24px rgb(38 58 82 / 0.14), 0 3px 8px -5px rgb(38 58 82 / 0.06);
 }
 
@@ -61,9 +64,8 @@
     inset 0 1px 1px var(--color-glass-reflection),
     inset 0 -1px 2px var(--color-glass-reflection),
     var(--shadow-glass-card);
-  -webkit-backdrop-filter: blur(10px) saturate(105%);
   backdrop-filter: blur(10px) saturate(105%);
-  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 400ms var(--ease-drift);
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     &:hover {
@@ -75,6 +77,19 @@
     background: var(--color-sky-100);
     border-color: var(--color-glass-edge);
   }
+}
+
+/* Project and experience cards share one shell: media/panel column + text column. Pair with `group liquid-card`. */
+@utility card {
+  @apply grid gap-4 rounded-3xl p-3 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-7 lg:grid-cols-[320px_minmax(0,1fr)];
+}
+
+@utility card-body {
+  @apply flex flex-col justify-between gap-3 px-1.5 pb-1.5 md:py-1.5 md:pr-2 md:pl-0;
+}
+
+@utility card-title {
+  @apply text-xl leading-tight font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent md:text-2xl;
 }
 
 /* Touch screens show color immediately; mouse and keyboard reveal it on interaction. */
@@ -116,13 +131,6 @@
     var(--color-sky-300) 82%,
     var(--color-haze) 100%
   );
-}
-
-/* Rounded outline tag, e.g. "SK—26" */
-@utility tag {
-  border: 1px solid currentColor;
-  border-radius: 9999px;
-  padding: 3px 12px;
 }
 
 /*
@@ -207,7 +215,6 @@
   html {
     background-color: var(--color-paper);
     color: var(--color-fg);
-    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
 

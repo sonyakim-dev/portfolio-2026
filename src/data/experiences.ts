@@ -12,7 +12,7 @@ export type HeroCredit = {
 };
 
 export const HERO_EXPERIENCE: HeroCredit[] = [
-  { role: "Software Engineer", company: "?", year: "2026" },
+  { role: "Software Engineer", company: "?", year: "2026 - NOW" },
   { role: "Software Engineer", company: "Snap", year: "2025 - 2026" },
   { role: "Software Engineer Intern", company: "Snap", year: "2024" },
   { role: "Software Engineer Intern", company: "Snap", year: "2023" },
@@ -32,11 +32,9 @@ export type Experience = {
 
 // Job history, newest first.
 export const EXPERIENCES: Experience[] = [
-  // { role: "Software Engineer", company: "Linktree", period: "2026" },
   {
     role: "Software Engineer",
     company: "?",
-    team: "",
     period: "2026 - Current",
     location: "Remote",
     highlights: ["Ready to go. Coming soon."],
@@ -44,7 +42,7 @@ export const EXPERIENCES: Experience[] = [
   {
     role: "Software Engineer",
     company: "Snap Inc.",
-    period: "Aug 2025 – Apr 2026",
+    period: "Aug 2025 - Apr 2026",
     team: "Media Delivery Platform Backend",
     location: "Santa Monica, CA",
     tech: ["go", "java", "python", "aws", "gcp"],
@@ -56,7 +54,7 @@ export const EXPERIENCES: Experience[] = [
   {
     role: "AI Studio Fellow",
     company: "Yardsworth",
-    period: "Aug 2024 – Dec 2024",
+    period: "Aug 2024 - Dec 2024",
     location: "Remote",
     tech: ["python"],
     highlights: [
@@ -69,7 +67,7 @@ export const EXPERIENCES: Experience[] = [
     period: "Jun 2024 - Sep 2024",
     team: "ML Inference Platform Backend",
     location: "Santa Monica, CA",
-    tech: ["python", "gcp"],
+    tech: ["python", "java", "gcp"],
     highlights: [
       "Improved model search performance by optimizing filtering, sorting, and data migration on Google Cloud Datastore, significantly reducing lookup time for the latest models.",
       "Proposed a scalable deployment pipeline for PyTorch models across GCP Kubernetes and AWS using Temporal for orchestration, and contributed to improving system reliability through testing and validation improvements.",
@@ -80,7 +78,7 @@ export const EXPERIENCES: Experience[] = [
     company: "El Camino College",
     period: "Apr 2023 - Sep 2024",
     location: "Remote",
-    tech: ["python"],
+    tech: ["python", "html"],
     highlights: [
       "Built an automated assessment generator using Python (Matplotlib, SciPy) to create randomized problem sets, improving accessibility and reducing the cost of course materials for students.",
     ],
@@ -91,7 +89,7 @@ export const EXPERIENCES: Experience[] = [
     period: "May 2023 - Sep 2023",
     team: "Ads Business Platform Frontend",
     location: "Santa Monica, CA",
-    tech: ["react", "typescript"],
+    tech: ["react", "typescript", "graphql"],
     highlights: [
       "Integrated contextual Business Help Center content into the Ads interface via Salesforce APIs, increasing ad setup completion rates and reducing support demand.",
       "Developed a centralized platform page for codeless ad integrations and improved connected partner discovery using GraphQL-based filtering.",

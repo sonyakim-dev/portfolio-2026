@@ -7,10 +7,10 @@ import {
   siFirebase,
   siGo,
   siGooglecloud,
+  siGraphql,
   siHtml5,
   siJavascript,
   siMui,
-  siOpenjdk,
   siPython,
   siReact,
   siShopify,
@@ -20,6 +20,7 @@ import {
 
 import { siAmazonaws } from '../icons/aws'
 import { siCsharp } from '../icons/csharp'
+import { siJava } from '../icons/java'
 import { siAdobephotoshop } from '../icons/photoshop'
 
 export type Tech = {
@@ -31,8 +32,8 @@ export type Tech = {
 }
 
 // One place to map a project's tech keys to label + icon.
-// simple-icons removed the C#, Photoshop and AWS marks at the brand owners' request; they are kept locally in
-// src/icons/. Java uses the OpenJDK mark (the coffee cup).
+// simple-icons removed the C#, Photoshop, AWS and Java (coffee cup) marks at the brand owners' request; they are
+// kept locally in src/icons/.
 export const TECH = {
   reactNative: { label: 'React Native', icon: siReact },
   react: { label: 'React', icon: siReact },
@@ -50,9 +51,10 @@ export const TECH = {
   shopify: { label: 'Shopify', icon: siShopify },
   photoshop: { label: 'Photoshop', icon: siAdobephotoshop },
   go: { label: 'Go', icon: siGo },
-  java: { label: 'Java', icon: siOpenjdk },
+  java: { label: 'Java', icon: siJava },
   aws: { label: 'AWS', icon: siAmazonaws },
   gcp: { label: 'Google Cloud', icon: siGooglecloud },
+  graphql: { label: 'GraphQL', icon: siGraphql },
   craft: { label: 'Handcraft', glyph: Hammer },
 } satisfies Record<string, Tech>
 

@@ -12,3 +12,13 @@ export function TechChip({ tech }: { tech: TechKey }) {
     </li>
   );
 }
+
+export function TechList({ tech }: { tech: TechKey[] }) {
+  return (
+    <ul aria-label="Tech stack" className="flex flex-wrap gap-1.5 sm:gap-2">
+      {tech.map((key) => (
+        <TechChip key={key} tech={key} />
+      ))}
+    </ul>
+  );
+}

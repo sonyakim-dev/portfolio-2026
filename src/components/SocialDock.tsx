@@ -1,12 +1,8 @@
 import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { SOCIAL_LINKS } from "../data/profile";
+import { gsap, ScrollTrigger, useGSAP } from "../lib/gsap";
 import { BrandIcon } from "./BrandIcon";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
  * Floating glass pill with LinkedIn + GitHub. It slides up once the content below the hero (Experience) is on screen
@@ -52,7 +48,7 @@ export function SocialDock() {
             target="_blank"
             rel="noopener"
             aria-label={label}
-            className="microtype flex size-11 items-center justify-center gap-2.5 rounded-full text-[11px] transition-colors hover:bg-fg hover:text-paper sm:w-auto sm:px-5"
+            className="microtype flex size-11 items-center justify-center gap-2.5 rounded-full text-[11px] transition-colors duration-500 ease-drift hover:bg-fg hover:text-paper sm:w-auto sm:px-5"
           >
             <BrandIcon icon={icon} className="size-4" />
             <span className="hidden sm:inline">{label}</span>

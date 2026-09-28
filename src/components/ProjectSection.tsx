@@ -1,6 +1,7 @@
 import cloudsFar from "../assets/clouds-far.webp";
 import { PROJECTS } from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
+import { SectionHeader } from "./SectionHeader";
 
 export function ProjectSection() {
   return (
@@ -24,12 +25,7 @@ export function ProjectSection() {
       />
 
       <div className="relative mx-auto max-w-328">
-        <div className="microtype mb-8 flex justify-between border-b border-line pb-3 text-[11px] sm:mb-8 sm:pb-4 sm:text-xs">
-          <h2 id="projects-heading" className="font-[inherit]">
-            Projects
-          </h2>
-          <span>({PROJECTS.length})</span>
-        </div>
+        <SectionHeader id="projects-heading" title="Projects" count={PROJECTS.length} />
 
         <ul className="space-y-4 sm:space-y-5">
           {PROJECTS.map((project) => (

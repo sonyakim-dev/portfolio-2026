@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 
 import type { Project } from "../data/projects";
-import { TechChip } from "./TechChip";
+import { TechList } from "./TechChip";
 
 /** One project per row: image, then category, title, outcome and stack. The whole card is the link. */
 export function ProjectCard({ project }: { project: Project }) {
@@ -12,7 +12,7 @@ export function ProjectCard({ project }: { project: Project }) {
       target="_blank"
       rel="noopener"
       aria-label={`${title}, ${category} (opens in a new tab)`}
-      className="group liquid-card grid gap-4 rounded-3xl p-3 focus-visible:outline-offset-4 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-7 lg:grid-cols-[320px_minmax(0,1fr)]"
+      className="group liquid-card card"
     >
       <div className="aspect-video overflow-hidden rounded-2xl bg-line md:aspect-16/10 md:self-center">
         <img
@@ -23,7 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
         />
       </div>
 
-      <div className="flex flex-col justify-between gap-3 px-1.5 pb-1.5 md:py-1.5 md:pr-2 md:pl-0">
+      <div className="card-body">
         <div className="flex items-center justify-between">
           <span className="microtype text-[11px] text-muted">{category}</span>
           <span className="liquid-card grid size-8 place-items-center rounded-full md:size-9">
@@ -32,17 +32,11 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="space-y-1.5">
-          <h3 className="text-xl leading-tight font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent md:text-2xl">
-            {title}
-          </h3>
-          <p className={`text-sm leading-snug ${outcome ? "text-fg" : "text-muted italic"}`}>{outcome ?? ""}</p>
+          <h3 className="card-title">{title}</h3>
+          {outcome && <p className="text-sm leading-snug">{outcome}</p>}
         </div>
 
-        <ul aria-label="Tech stack" className="flex flex-wrap gap-1.5 sm:gap-2">
-          {tech.map((key) => (
-            <TechChip key={key} tech={key} />
-          ))}
-        </ul>
+        <TechList tech={tech} />
       </div>
     </a>
   );

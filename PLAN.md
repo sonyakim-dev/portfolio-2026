@@ -41,16 +41,16 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - Experience lives in `src/data/experiences.ts` as two independent lists: `HERO_EXPERIENCE` (short credits for the hero ticker: role, company, year) and `EXPERIENCES` (detailed cards in the **Experience** section before Selected work: role, company, period, optional team, location, summary, highlights, tech). Experience cards share the project card's shell and grid, with an inset panel (company, team, period, location) in place of the image and no link. Jobs and projects are separate.
 - Bio: not shown anywhere since About was removed.
 - Links: LinkedIn https://www.linkedin.com/in/sonya-kim · GitHub https://github.com/sonyakim-dev · email TBD.
-- Projects: the 10 from the old site (`src/data/projects.ts`); stacks from each repo's package.json / GitHub languages; Target VR = Unity + C#; the craft pieces = "Handcraft". simple-icons removed the LinkedIn, Photoshop and C# logos at the brands' request: LinkedIn, Photoshop, C# and AWS marks are kept locally in `src/icons/`; Java uses the OpenJDK mark. One-line outcomes are **placeholders** until Sonya writes them; never invent claims.
+- Projects: the 10 from the old site (`src/data/projects.ts`); stacks from each repo's package.json / GitHub languages; Target VR = Unity + C#; the craft pieces = "Handcraft". simple-icons removed the LinkedIn, Photoshop, C#, AWS and Java (coffee cup) logos at the brands' request, so those marks are kept locally in `src/icons/` (Java from simple-icons v6; the OpenJDK icon is the Duke mascot, not the cup). One-line outcomes are **placeholders** until Sonya writes them; never invent claims.
 
 ## Architecture
 - Vite + React + TS. No UI kit, router or state library.
-- **Styling:** Tailwind CSS v4 (`@tailwindcss/vite`), config in `src/index.css`: tokens in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky colors), fonts (`font-display`, `font-sans`, `font-mono`), shared `@utility` recipes (`liquid`, `microtype`), keyframes (`bob`, `sway`, `twinkle`).
+- **Styling:** Tailwind CSS v4 (`@tailwindcss/vite`), config in `src/index.css`: tokens in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky colors), fonts (`font-display`, `font-sans`, `font-mono`), shared `@utility` recipes (`liquid`, `liquid-card`, `microtype`, `card` / `card-body` / `card-title` for the project and experience cards), keyframes (`bob`, `sway`, `twinkle`).
 - **Libraries:**
   | Package | Used for |
   |---|---|
   | `tailwindcss`, `@tailwindcss/vite` | Styling |
-  | `gsap`, `@gsap/react` | Pinned, scrubbed scroll timeline (`ScrollTrigger`), dock enter/exit, `useGSAP` cleanup, `gsap.matchMedia` for mobile + reduced motion |
+  | `gsap`, `@gsap/react` | Pinned, scrubbed scroll timeline (`ScrollTrigger`), dock enter/exit, `useGSAP` cleanup, `gsap.matchMedia` for mobile + reduced motion. Plugins are registered once in `src/lib/gsap.ts`; components import `gsap`, `useGSAP`, `ScrollTrigger` from there. |
   | `lucide-react` | UI icons (arrow, hammer, chevron) |
   | `simple-icons` | Brand/tech icons, tree-shaken |
   | `@fontsource-variable/{bodoni-moda,geist,geist-mono}` | Self-hosted fonts |

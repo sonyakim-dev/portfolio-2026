@@ -1,6 +1,4 @@
 import { useRef, type CSSProperties } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { Sparkle } from "lucide-react";
 
 import a from "../assets/sonya/a.webp";
@@ -9,12 +7,11 @@ import o from "../assets/sonya/o.webp";
 import S from "../assets/sonya/S.webp";
 import y from "../assets/sonya/y.webp";
 import { LETTERS, WORD_HEIGHT, WORD_WIDTH } from "../data/chromeLetters";
+import { gsap, useGSAP } from "../lib/gsap";
 
 type Char = (typeof LETTERS)[number]["char"];
 
 const SRC: Record<Char, string> = { S, o, n, y, a };
-
-gsap.registerPlugin(useGSAP);
 
 // Per-letter float: bob/sway periods (s), shared delay (s), bob amplitude (cqw), tilt (deg).
 // Different, non-matching periods keep the letters drifting independently.
@@ -103,7 +100,7 @@ export function ChromeName({ className = "" }: Props) {
     <h1
       ref={root}
       aria-label="Sonya Kim"
-      className={`@container relative m-0 ${className}`}
+      className={`@container relative ${className}`}
       style={{ aspectRatio: `${WORD_WIDTH} / ${WORD_HEIGHT}` }}
     >
       {LETTERS.map((letter) => {

@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
   {
     title: "YouBelong",
     category: "App Dev",
-    tech: ["reactNative", "javascript", "expo", "firebase"],
+    tech: ["reactNative", "javascript", "firebase", "expo"],
     url: "https://github.com/sonyakim-dev/YouBelong",
     image: youBelong,
     description:
@@ -55,14 +55,14 @@ export const PROJECTS: Project[] = [
   {
     title: "Target VR",
     category: "Game Dev",
-    tech: ["unity", "csharp"],
+    tech: ["csharp", "unity"],
     url: "https://sonyakim.webflow.io/project/targetvr",
     image: targetVr,
   },
   {
     title: "forme.Love",
     category: "Web Design",
-    tech: ["shopify"],
+    tech: ["shopify", "photoshop"],
     url: "https://sonyakim.webflow.io/project/formelove",
     image: formeLove,
   },
@@ -79,6 +79,7 @@ export const PROJECTS: Project[] = [
     tech: ["craft"],
     url: "https://sonyakim.webflow.io/project/crafttrendfair",
     image: craftTrendFair,
+    description: "Twenty Question, Twenty Answers — I live up my life today.",
   },
   {
     title: "Cosmos",
@@ -86,6 +87,8 @@ export const PROJECTS: Project[] = [
     tech: ["craft"],
     url: "https://sonyakim.squarespace.com/projects/living-design",
     image: cosmos,
+    description:
+      "Above my head floats the universe of a girl who once looked up at the sky and dreamed of going to space.",
   },
   {
     title: "Fantasy",
@@ -93,5 +96,7 @@ export const PROJECTS: Project[] = [
     tech: ["craft"],
     url: "https://sonyakim.squarespace.com/projects/jewelry-design",
     image: fantasy,
+    description:
+      "Pleasure is one of humanity's most basic and instinctive desires. And money may be the most powerful drug of all — one that promises pleasure.",
   },
 ];
