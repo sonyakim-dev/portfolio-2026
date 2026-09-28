@@ -15,7 +15,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 ## Experience (scroll timeline of the pinned hero)
 | Stage | Progress | What happens |
 |---|---|---|
-| 01 Hero | 0% | Framed sky panel on paper with poster microtype. Italic serif "SOFTWARE ENGINEER" behind the chrome mark; each letter bobs and sways on its own rhythm (CSS). "⌄ Scroll to enter" cue at the panel's bottom. |
+| 01 Hero | 0% | Framed sky panel on paper with poster microtype. Italic serif "SOFTWARE ENGINEER" behind the chrome mark; each letter bobs and sways on its own rhythm (CSS). "⌄ Scroll to enter" cue at the panel's bottom: a real `#experience` link; clicking glides through the whole sequence to Experience (GSAP ScrollToPlugin, 2.2s, instant under reduced motion). |
 | 02 Frame opens | ≈15% | The panel grows edge to edge (`clip-path` inset → 0). Poster type and the cue fade. |
 | 03 Approach | ≈40% | The mark scales up slightly; far and near cloud layers rise at different speeds (parallax). |
 | 04 Through the clouds | ≈65% | The near layer passes in front of the mark; the mark softens and fades behind it. |

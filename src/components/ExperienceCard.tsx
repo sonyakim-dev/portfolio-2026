@@ -26,7 +26,7 @@ export function ExperienceCard({ job }: { job: Experience }) {
           <h3 className="text-xl leading-tight font-semibold tracking-[-0.02em] transition-colors group-hover:text-accent md:text-2xl">
             {role}
           </h3>
-          {/* {written && <p className="text-sm leading-snug md:text-[15px] text-fg">{written}</p>} */}
+          {written && <p className="text-sm leading-snug md:text-[15px] text-fg">{written}</p>}
           {highlights && highlights.length > 0 && (
             <ul className="list-disc space-y-1 pt-1 pl-5 text-sm leading-snug marker:text-soft">
               {highlights.map((h) => (

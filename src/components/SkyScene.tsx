@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, type MouseEvent } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDownLeft, ArrowUpRight, ChevronDown, Sparkle } from "lucide-react";
 
@@ -14,7 +15,7 @@ import { ChromeName } from "./ChromeName";
 import { ExperienceTicker } from "./ExperienceTicker";
 import { Tagline } from "./Tagline";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 // Don't recalculate (and jump) when a phone's address bar shows/hides.
 ScrollTrigger.config({ ignoreMobileResize: true });
 
@@ -53,7 +54,7 @@ function HeaderLink({ label, href, icon }: { label: string; href: string; icon: 
 export function SkyScene() {
   const root = useRef<HTMLElement>(null);
 
-  useGSAP(
+  const { contextSafe } = useGSAP(
     () => {
       const q = gsap.utils.selector(root);
       const [section] = q("[data-scene]") as HTMLElement[];
@@ -145,6 +146,17 @@ export function SkyScene() {
     { scope: root },
   );
 
+  // "Scroll to enter": glide down through the whole cloud sequence to Experience (instant under reduced motion).
+  // It stays a real #experience link, so it also works without JavaScript and from the keyboard.
+  const enter = contextSafe((e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // pass the element, not a selector: contextSafe scopes selector text to this hero, and #experience is outside it
+    const target = document.getElementById("experience");
+    if (!target) return;
+    gsap.to(window, { scrollTo: { y: target, autoKill: true }, duration: reduce ? 0 : 2.2, ease: "power2.inOut" });
+  });
+
   return (
     <section ref={root} aria-label="Intro">
       <div
@@ -167,7 +179,7 @@ export function SkyScene() {
             data-far
             src={cloudsFar}
             alt=""
-            className="absolute bottom-[-4%] left-[-60%] w-[220%] max-w-none origin-bottom opacity-0 will-change-transform sm:left-[-10%] sm:w-[120%]"
+            className="absolute bottom-[-4%] left-[-60%] w-[220%] max-w-none origin-bottom opacity-0 blur-[2px] will-change-transform sm:left-[-10%] sm:w-[120%] sm:blur-[3px]"
           />
         </div>
 
@@ -224,17 +236,19 @@ export function SkyScene() {
             </div>
           </div>
 
-          <p
+          <a
             data-cue
-            className="microtype absolute inset-x-0 bottom-5 flex items-center justify-center gap-1.5 text-[12px] text-cloud [text-shadow:0_1px_8px_rgb(60_85_110/0.55)] motion-safe:nudge"
+            href="#experience"
+            onClick={enter}
+            className="microtype absolute inset-x-0 bottom-5 mx-auto flex w-fit items-center justify-center gap-1.5 text-[12px] text-cloud [text-shadow:0_1px_2px_rgb(30_45_65/0.55),0_2px_12px_rgb(40_60_85/0.6)] motion-safe:nudge min-h-11 rounded-full px-3"
           >
             <ChevronDown
               aria-hidden="true"
               strokeWidth={2}
-              className="size-4 drop-shadow-[0_1px_4px_rgb(60_85_110/0.55)]"
+              className="size-4 filter-[drop-shadow(0_1px_1.5px_rgb(30_45_65/0.7))_drop-shadow(0_2px_8px_rgb(40_60_85/0.6))]"
             />
             Scroll to enter
-          </p>
+          </a>
         </div>
 
         {/* In front of the name: near clouds, mist and the white wash (hidden until scrolling) */}

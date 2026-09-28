@@ -14,13 +14,13 @@ export function ProjectSection() {
         src={cloudsFar}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute top-[22%] -left-1/3 w-[110%] max-w-none opacity-40 select-none sm:w-[70%]"
+        className="pointer-events-none absolute top-[22%] -left-1/3 w-[110%] max-w-none opacity-40 blur-[3px] select-none sm:w-[70%]"
       />
       <img
         src={cloudsFar}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute top-[62%] -right-1/3 w-[110%] max-w-none -scale-x-100 opacity-35 select-none sm:w-[70%]"
+        className="pointer-events-none absolute top-[62%] -right-1/3 w-[110%] max-w-none -scale-x-100 opacity-35 blur-[3px] select-none sm:w-[70%]"
       />
 
       <div className="relative mx-auto max-w-328">

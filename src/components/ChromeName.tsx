@@ -37,11 +37,12 @@ const CENTER = Object.fromEntries(
   LETTERS.map((l) => [l.char, { fx: (l.x + l.w / 2) / WORD_WIDTH, fy: (l.y + l.h / 2) / WORD_HEIGHT }]),
 ) as Record<Char, { fx: number; fy: number }>;
 
-// Twinkling glints near the letters' highlights: position as a fraction of the letter box, size in cqw.
+// Twinkling glints near the letters' highlights: position as a fraction of the letter box, size in cqw
+// (each is slightly blurred with a soft glow, both proportional to its size).
 const GLINTS: { char: Char; fx: number; fy: number; size: number; delay: number }[] = [
-  { char: "S", fx: 0.22, fy: 0.03, size: 2.2, delay: 0 },
-  { char: "o", fx: 0.6, fy: 0.06, size: 1.4, delay: 1.3 },
-  { char: "a", fx: 0.78, fy: 0.04, size: 1.8, delay: 2.6 },
+  { char: "S", fx: 0.02, fy: 0.03, size: 7, delay: 0 },
+  { char: "o", fx: 0.6, fy: 0.4, size: 1.4, delay: 1.3 },
+  { char: "a", fx: 0.9, fy: 0.04, size: 2, delay: 2.6 },
 ];
 
 const pctX = (px: number) => `${(px / WORD_WIDTH) * 100}%`;
@@ -146,6 +147,8 @@ export function ChromeName({ className = "" }: Props) {
               width: `${g.size}cqw`,
               height: `${g.size}cqw`,
               animationDelay: `${g.delay}s`,
+              // soft, slightly out-of-focus glint: blur and glow scale with the glint's size
+              filter: `blur(${g.size * 0.05}cqw) drop-shadow(0 0 ${g.size * 0.15}cqw rgb(255 255 255 / 0.8))`,
             }}
           />
         );
