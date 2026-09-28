@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 
-import type { Project } from "../data/projects";
-import { TechList } from "./TechChip";
+import type { Project } from "@/data/projects";
+import { TechList } from "@/components/ui/TechChip";
 
 /** One project per row: image, then category, title, outcome and stack. The whole card is the link. */
 export function ProjectCard({ project }: { project: Project }) {

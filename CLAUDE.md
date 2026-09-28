@@ -18,6 +18,7 @@ Design mockup: https://claude.ai/artifact/9w6GzV4DSVRmBcN9HFzzrT → page "B —
 
 ## Conventions
 - **Content is data:** projects live in `src/data/projects.ts` (`title`, `description`, `category`, `tech[]`, `url`, `image`); job history lives separately in `src/data/experiences.ts`: `HERO_EXPERIENCE` (short hero credits) and `EXPERIENCES` (detailed cards: `role`, `company`, `period`, `team`, `location`, `summary`, `highlights`, `tech`). Jobs and projects are unrelated lists. Edit the data, not the components, to change content. Never invent project claims; unwritten outcomes stay visibly marked as placeholders.
+- **Imports:** anything outside the current folder is imported from `@/` (= `src/`, e.g. `@/data/projects`, `@/components/ui/BrandIcon`); same-folder files use `./`. The alias is set in `vite.config.ts` and mirrored in `tsconfig.app.json` `paths`.
 - **Icons:** UI glyphs from `lucide-react`; tech/brand icons from `simple-icons` (`import { siReact } from 'simple-icons'`, render `path` in an `<svg viewBox="0 0 24 24" fill="currentColor">`). Map tech names to icons in one place (`src/data/tech.ts`).
 - **Colors:** light only. All colors are Tailwind tokens defined in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky tokens). Use those; never hex values or raw palette colors in components.
 - **Shared styles:** repeated visual recipes are Tailwind `@utility` classes in `src/index.css` (e.g. `liquid` for the glass look, `microtype` for uppercase mono labels), not copy-pasted class strings.

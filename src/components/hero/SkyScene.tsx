@@ -1,13 +1,13 @@
 import { useRef, type MouseEvent } from "react";
 import { ArrowDownLeft, ArrowUpRight, ChevronDown, Sparkle } from "lucide-react";
 
-import cloudMist from "../assets/cloud-mist.webp";
-import cloudsFar from "../assets/clouds-far.webp";
-import cloudsNear from "../assets/clouds-near.webp";
-import sky from "../assets/sky.webp";
-import { SOCIAL_LINKS } from "../data/profile";
-import { gsap, useGSAP } from "../lib/gsap";
-import { BrandIcon } from "./BrandIcon";
+import cloudMist from "@/assets/cloud-mist.webp";
+import cloudsFar from "@/assets/clouds-far.webp";
+import cloudsNear from "@/assets/clouds-near.webp";
+import sky from "@/assets/sky.webp";
+import { SOCIAL_LINKS } from "@/data/profile";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { BrandIcon } from "@/components/ui/BrandIcon";
 import { ChromeName } from "./ChromeName";
 import { ExperienceTicker } from "./ExperienceTicker";
 import { Tagline } from "./Tagline";

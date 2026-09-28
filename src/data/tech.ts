@@ -18,10 +18,10 @@ import {
   siUnity,
 } from 'simple-icons'
 
-import { siAmazonaws } from '../icons/aws'
-import { siCsharp } from '../icons/csharp'
-import { siJava } from '../icons/java'
-import { siAdobephotoshop } from '../icons/photoshop'
+import { siAmazonaws } from '@/icons/aws'
+import { siCsharp } from '@/icons/csharp'
+import { siJava } from '@/icons/java'
+import { siAdobephotoshop } from '@/icons/photoshop'
 
 export type Tech = {
   label: string

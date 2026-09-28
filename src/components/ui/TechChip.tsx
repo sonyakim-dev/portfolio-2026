@@ -1,4 +1,4 @@
-import { TECH, type TechKey } from "../data/tech";
+import { TECH, type TechKey } from "@/data/tech";
 import { BrandIcon } from "./BrandIcon";
 
 export function TechChip({ tech }: { tech: TechKey }) {

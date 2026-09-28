@@ -1,4 +1,4 @@
-import { EXPERIENCES } from "../data/experiences";
+import { EXPERIENCES } from "@/data/experiences";
 import { ExperienceCard } from "./ExperienceCard";
 import { SectionHeader } from "./SectionHeader";
 

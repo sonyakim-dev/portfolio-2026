@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Sparkle } from "lucide-react";
 
-import { HERO_EXPERIENCE } from "../data/experiences";
+import { HERO_EXPERIENCE } from "@/data/experiences";
 
 // Enough copies that one half of the track is wider than any screen, so the loop never shows a gap.
 const COPIES = Math.max(2, Math.ceil(8 / HERO_EXPERIENCE.length));

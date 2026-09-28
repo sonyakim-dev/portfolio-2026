@@ -1,13 +1,13 @@
-import cosmos from "../assets/projects/cosmos.webp";
-import craftTrendFair from "../assets/projects/craft-trend-fair.webp";
-import fantasy from "../assets/projects/fantasy.webp";
-import formeLove from "../assets/projects/forme-love.webp";
-import iceman from "../assets/projects/iceman.webp";
-import mooTea from "../assets/projects/moo-tea.webp";
-import promotionDesign from "../assets/projects/promotion-design.webp";
-import targetVr from "../assets/projects/target-vr.webp";
-import todayIsAHoliday from "../assets/projects/today-is-a-holiday.webp";
-import youBelong from "../assets/projects/youbelong.webp";
+import cosmos from "@/assets/projects/cosmos.webp";
+import craftTrendFair from "@/assets/projects/craft-trend-fair.webp";
+import fantasy from "@/assets/projects/fantasy.webp";
+import formeLove from "@/assets/projects/forme-love.webp";
+import iceman from "@/assets/projects/iceman.webp";
+import mooTea from "@/assets/projects/moo-tea.webp";
+import promotionDesign from "@/assets/projects/promotion-design.webp";
+import targetVr from "@/assets/projects/target-vr.webp";
+import todayIsAHoliday from "@/assets/projects/today-is-a-holiday.webp";
+import youBelong from "@/assets/projects/youbelong.webp";
 import type { TechKey } from "./tech";
 
 export type Project = {

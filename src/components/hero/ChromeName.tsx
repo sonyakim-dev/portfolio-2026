@@ -1,13 +1,13 @@
 import { useRef, type CSSProperties } from "react";
 import { Sparkle } from "lucide-react";
 
-import a from "../assets/sonya/a.webp";
-import n from "../assets/sonya/n.webp";
-import o from "../assets/sonya/o.webp";
-import S from "../assets/sonya/S.webp";
-import y from "../assets/sonya/y.webp";
-import { LETTERS, WORD_HEIGHT, WORD_WIDTH } from "../data/chromeLetters";
-import { gsap, useGSAP } from "../lib/gsap";
+import a from "@/assets/sonya/a.webp";
+import n from "@/assets/sonya/n.webp";
+import o from "@/assets/sonya/o.webp";
+import S from "@/assets/sonya/S.webp";
+import y from "@/assets/sonya/y.webp";
+import { LETTERS, WORD_HEIGHT, WORD_WIDTH } from "@/data/chromeLetters";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 type Char = (typeof LETTERS)[number]["char"];
 

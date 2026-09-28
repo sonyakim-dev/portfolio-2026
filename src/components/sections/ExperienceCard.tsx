@@ -1,5 +1,5 @@
-import type { Experience } from "../data/experiences";
-import { TechList } from "./TechChip";
+import type { Experience } from "@/data/experiences";
+import { TechList } from "@/components/ui/TechChip";
 
 /**
  * Same shell, grid and hover lift as ProjectCard, without an image or link: an inset panel takes the image's place

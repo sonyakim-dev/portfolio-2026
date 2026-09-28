@@ -45,6 +45,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 
 ## Architecture
 - Vite + React + TS. No UI kit, router or state library.
+- **Components** (`src/components/`), grouped by page region: `hero/` (SkyScene, ChromeName, Tagline, ExperienceTicker), `sections/` (Experience and Project sections, their cards, SectionHeader), `ui/` (BrandIcon, TechChip/TechList, shared across regions); page-level `Footer` and `SocialDock` stay at the top. GSAP setup lives in `src/lib/gsap.ts`.
 - **Styling:** Tailwind CSS v4 (`@tailwindcss/vite`), config in `src/index.css`: tokens in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky colors), fonts (`font-display`, `font-sans`, `font-mono`), shared `@utility` recipes (`liquid`, `liquid-card`, `microtype`, `card` / `card-body` / `card-title` for the project and experience cards), keyframes (`bob`, `sway`, `twinkle`).
 - **Libraries:**
   | Package | Used for |

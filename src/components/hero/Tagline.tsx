@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { TAGLINE } from "../data/profile";
+import { TAGLINE } from "@/data/profile";
 
 /** "Software Engineering + Linguistics + Art" with accent-colored plus signs. */
 export function Tagline({ className = "" }: { className?: string }) {

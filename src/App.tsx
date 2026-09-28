@@ -1,8 +1,8 @@
-import { ExperienceSection } from './components/ExperienceSection'
-import { Footer } from './components/Footer'
-import { SkyScene } from './components/SkyScene'
-import { SocialDock } from './components/SocialDock'
-import { ProjectSection } from './components/ProjectSection'
+import { ExperienceSection } from '@/components/sections/ExperienceSection'
+import { Footer } from '@/components/Footer'
+import { SkyScene } from '@/components/hero/SkyScene'
+import { SocialDock } from '@/components/SocialDock'
+import { ProjectSection } from '@/components/sections/ProjectSection'
 
 function App() {
   return (

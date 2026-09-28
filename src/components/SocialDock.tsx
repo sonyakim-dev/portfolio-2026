@@ -1,8 +1,8 @@
 import { useRef } from "react";
 
-import { SOCIAL_LINKS } from "../data/profile";
-import { gsap, ScrollTrigger, useGSAP } from "../lib/gsap";
-import { BrandIcon } from "./BrandIcon";
+import { SOCIAL_LINKS } from "@/data/profile";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { BrandIcon } from "@/components/ui/BrandIcon";
 
 /**
  * Floating glass pill with LinkedIn + GitHub. It slides up once the content below the hero (Experience) is on screen

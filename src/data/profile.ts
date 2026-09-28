@@ -1,6 +1,6 @@
 import { siGithub } from "simple-icons";
 
-import { siLinkedin } from "../icons/linkedin";
+import { siLinkedin } from "@/icons/linkedin";
 
 export const TAGLINE = ["Engineering", "Linguistics", "Art"] as const;
 

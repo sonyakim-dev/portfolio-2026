@@ -7,7 +7,6 @@ import type { TechKey } from "./tech";
 export type HeroCredit = {
   role: string;
   company: string;
-  /** Short, e.g. "2024" or "2025 – 2026" */
   year: string;
 };
 

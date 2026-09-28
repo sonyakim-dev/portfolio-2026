@@ -1,5 +1,5 @@
-import cloudsFar from "../assets/clouds-far.webp";
-import { PROJECTS } from "../data/projects";
+import cloudsFar from "@/assets/clouds-far.webp";
+import { PROJECTS } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { SectionHeader } from "./SectionHeader";
 
