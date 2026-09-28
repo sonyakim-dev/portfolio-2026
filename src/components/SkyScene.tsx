@@ -78,8 +78,8 @@ export function SkyScene() {
           // rises over it, starting at timeline time WORK_ENTERS — while the near clouds are still passing,
           // so the list emerges out of the clouds. A soft white gradient on top of Work (only shown while
           // this scene is active) keeps that edge misty instead of a hard line.
-          const screens = mobile ? 1.7 : 2.2;
-          const WORK_ENTERS = 5.5;
+          const screens = mobile ? 1.45 : 2.2;
+          const WORK_ENTERS = mobile ? 5 : 5.5; // phones hand off to the content a little sooner
           gsap.set("[data-pin-spacer]", { height: `${(screens - 1) * 100}dvh` });
           gsap.set(document.querySelector("[data-content-fade]"), { display: "block" });
 
