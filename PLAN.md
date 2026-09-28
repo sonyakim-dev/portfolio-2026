@@ -1,62 +1,83 @@
 # Portfolio — Plan
 
+Direction chosen: **B — Sky & chrome**. The site should feel like the opening of a short film: a framed poster sky opens up, the camera drifts toward the floating chrome **Sonya** mark, passes through the clouds, and the clouds clear into the project list on the same sky.
+Mockup (storyboard + desktop + mobile): https://claude.ai/artifact/9w6GzV4DSVRmBcN9HFzzrT → page "B — Sky & chrome".
+This file merges and supersedes `asset/PLAN.md` (kept only as a reference).
+
 ## Requirements
-- One-page personal portfolio, responsive and mobile-friendly
-- Hero: mouse-responsive animation + short bio + links (LinkedIn, GitHub, etc.)
-- Below: project cards (image, tech stack) linking to external URLs
-- Black & white, editorial serif display type, one accent color
-- Light/dark toggle, default dark
-- Vite + React + TypeScript
+- One-page portfolio, responsive and mobile-friendly. Vite + React + TypeScript.
+- Hero: floating chrome "Sonya" over a sky and cloud horizon; tagline, experience, LinkedIn/GitHub.
+- Scroll: the frame opens → approach → through the clouds → whiteout → selected work. Tracks scroll in both directions.
+- Work: one liquid-glass card per row (image, title, short outcome, category, tech-stack icons, external link) over the **same sky**, with no background swap or seam.
+- No About or Contact sections (removed in the canvas); LinkedIn/GitHub live in the hero and the floating social dock.
+- Light only (no dark mode).
 
-## Design direction (from /inspo)
-- **Hero:** full-bleed WebGL "liquid" surface, like the wave photo. The cursor makes ripples and glints. Dark theme = black water with white glints; light theme = pale silver/chrome water.
-- **Type:** Bodoni Moda (display serif, name + headings) · Geist (body) · Geist Mono (caps microtype), loaded from Google Fonts.
-- **Mockup:** https://claude.ai/artifact/9w6GzV4DSVRmBcN9HFzzrT (desktop + mobile, dark + light)
-- **Poster frame:** ALL-CAPS microtype along the edges, crosshair marks, pill tags (from the Cosmic poster).
-- **Accent:** one cobalt blue (Faerghus poster). Used sparingly: thin orbital lines, link hover, focus rings.
-- **Name animation:** each letter of "Sonya Kim" floats on its own (CSS keyframes, a different delay per letter). On desktop only, a slow "swell" follows the cursor: nearby letters rise, lean with the slope and drift slightly away, then settle back. This is done in JS: `pointermove` → a `requestAnimationFrame` loop. There are no springs; frame-rate-independent exponential easing (`1 - exp(-dt/τ)`) never overshoots. The cursor is smoothed with τ=0.25s and each letter with τ=0.45s. Falloff is a smoothstep within ~1.8× the letter height. The loop writes `transform` directly to letter refs rather than React state, and stops once every letter has settled. The float is on the outer span and the JS transform on the inner span. The effect is only attached when `matchMedia("(hover: hover) and (pointer: fine)")` matches, and is off for `prefers-reduced-motion`. Later option: drive the letters with the same ripple function as the WebGL shader so text and water move as one.
-- **No "Selected Work" heading:** the project cards follow the hero directly; the hero's bottom strip reads "Projects ↓ (10)".
-- **Hero copy:** name, tagline "Software Engineering + Linguistics + Art" (accent-colored `+`), bio from the old site, LinkedIn/GitHub pills with icons.
-- **Theme toggle:** icon-only round glass button (sun in dark mode, moon in light), `aria-label` says what it switches to.
-- **Floating dock:** once `#work` scrolls into view, a glass pill with the LinkedIn + GitHub links slides up and stays at the bottom center (icons only on mobile). Plan: `IntersectionObserver` toggles a class, and a CSS transition handles the motion (translateY + opacity + blur, spring-like easing).
-- **Project cards:** one per row, "liquid glass" (translucent fill, backdrop blur, top highlight, sheen). Image on the left (grayscale → color on hover), with category (no numbering), arrow button, big serif title and a **Stack** row of icon chips on the right. On mobile the card stacks vertically. The whole card is a link that opens a new tab.
-- **Glass needs something behind it:** the wave shows (dimmed) behind the Work section. In the real build, the WebGL canvas can be a fixed full-page background.
+## Experience (scroll timeline of the pinned hero)
+| Stage | Progress | What happens |
+|---|---|---|
+| 01 Hero | 0% | Framed sky panel on paper with poster microtype. Italic serif "SOFTWARE ENGINEER" behind the chrome mark; each letter bobs and sways on its own rhythm (CSS). "⌄ Scroll to enter" cue at the panel's bottom. |
+| 02 Frame opens | ≈15% | The panel grows edge to edge (`clip-path` inset → 0). Poster type and the cue fade. |
+| 03 Approach | ≈40% | The mark scales up slightly; far and near cloud layers rise at different speeds (parallax). |
+| 04 Through the clouds | ≈65% | The near layer passes in front of the mark; the mark softens and fades behind it. |
+| 05 Whiteout | ≈85% | The dense foreground fills the view in a brief soft white. |
+| 06 Selected work | 100% | White clears to the same sky; the pin releases and the work section scrolls normally. The dock slides in. |
 
-## Assumptions
-- Always start in dark mode; the visitor's toggle choice is saved in `localStorage`.
-- Keep all 10 projects from the old site. Images are copied from the old repo.
-- Tech stacks come from the repos' package.json / GitHub languages where available; Target VR = Unity + C#; the three craft projects = "Handcraft".
-- Content is static and lives in `src/data/projects.ts`. No CMS.
+## Visual system
+- **Palette:** powder blue, cloud white, cool silver, dark blue-gray text (`#525D72` for soft labels). Paper `#eeefed` around the framed hero. Accent: soft cobalt `#4657d6`, used sparingly (tagline `+`, hovers, focus rings).
+- **Ultra-wide:** the framed panel is capped at 1680px (frame margins grow) and the logo at 1100px; the frame still opens to full width on scroll.
+- **Type:** Bodoni Moda italic (poster serif only) · Geist (body; semibold project titles) · Geist Mono (uppercase microtype).
+- **Logo:** Sonya's chrome wordmark, split into 5 letters (S, o, n, y, a) so each floats independently. Real `<h1>` with `aria-label="Sonya Kim"`; letter images are decorative.
+- **Sky:** `asset/sky-background.png` (→ `src/assets/sky.webp`) for the hero. The page below continues one sky gradient sampled from it (`#f7fafc` → `#b1d2ea` → `#a0c8e6` → `#c8dbe8`) behind the Work section and footer.
+- **Clouds:** `clouds-far` and `clouds-near` transparent layers for parallax and occlusion; `cloud-mist` scaled up plus a white overlay for the whiteout.
+- **No top nav** (only one section; the scroll cue and the social dock cover navigation).
+- **Cards and dock:** liquid glass (translucent white, backdrop blur, luminous edge, soft shadow); text stays legible over bright areas via card tint.
+
+## Content
+- Tagline: "Engineering + Linguistics + Art". Header microtype (desktop): "Sonya Kim · [LinkedIn] ↗ · Welcome to my world · ↙ [GitHub] · Portfolio" — links are solid black pills that invert on hover; mobile: "Sonya Kim" + round icon-only LinkedIn/GitHub buttons on the right.
+- Experience: a single credits-style ticker along the bottom of the frame, drifting right → left forever (CSS `marquee`, stopped under reduced motion); role **bold**, year in Bodoni italic. The bottom strip matches the header height, so the frame is symmetric.
+- Experience entries live in `src/data/profile.ts` (`EXPERIENCE`).
+- Bio: not shown anywhere since About was removed.
+- Links: LinkedIn https://www.linkedin.com/in/sonya-kim · GitHub https://github.com/sonyakim-dev · email TBD.
+- Projects: the 10 from the old site (`src/data/projects.ts`); stacks from each repo's package.json / GitHub languages; Target VR = Unity + C#; the craft pieces = "Handcraft". simple-icons removed the LinkedIn, Photoshop and C# logos at the brands' request: LinkedIn and Photoshop marks are kept locally in `src/icons/`; C# is label-only. One-line outcomes are **placeholders** until Sonya writes them; never invent claims.
 
 ## Architecture
-- Vite + React + TS. Plain CSS with CSS variables for theming. No UI kit or router.
-- Icons: a small `icons.ts` map of SVG paths copied from Simple Icons (brands) + Lucide (sun/moon/hammer/arrow). No icon-library dependency.
-- `index.html` inline script sets `data-theme` before React loads (prevents a white flash).
-- `WaveCanvas` component: raw WebGL, one fullscreen fragment shader.
-  - Uniforms: time, mouse, resolution, theme colors
-  - Mobile: follows touch; otherwise the "mouse" drifts on its own
-  - `prefers-reduced-motion` → single static frame
-  - Pauses when off-screen or the tab is hidden; device pixel ratio capped at 1.5
-  - No WebGL → CSS gradient fallback
-- Tests: minimal, with no component or snapshot tests. A couple of Vitest unit tests for pure logic only (theme resolution from storage, the easing/falloff math). UI and animations are checked by running the app and `npm run build`.
-- Deploy: Netlify (static `dist/`, default `base: '/'`).
+- Vite + React + TS. No UI kit, router or state library.
+- **Styling:** Tailwind CSS v4 (`@tailwindcss/vite`), config in `src/index.css`: tokens in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky colors), fonts (`font-display`, `font-sans`, `font-mono`), shared `@utility` recipes (`liquid`, `microtype`), keyframes (`bob`, `sway`, `twinkle`).
+- **Libraries:**
+  | Package | Used for |
+  |---|---|
+  | `tailwindcss`, `@tailwindcss/vite` | Styling |
+  | `gsap`, `@gsap/react` | Pinned, scrubbed scroll timeline (`ScrollTrigger`), dock enter/exit, `useGSAP` cleanup, `gsap.matchMedia` for mobile + reduced motion |
+  | `lucide-react` | UI icons (arrow, hammer, chevron) |
+  | `simple-icons` | Brand/tech icons, tree-shaken |
+  | `@fontsource-variable/{bodoni-moda,geist,geist-mono}` | Self-hosted fonts |
+- **Components:** `SkyScene` (framed hero + pinned timeline + cloud layers), `ChromeName` (5 letter images with CSS bob/sway), `Tagline`, `SocialPill`, `WorkSection` + `ProjectCard`, `SocialDock`.
+- **Motion rules:** animate only `transform`, `opacity` and `clip-path`; `100dvh` for the pinned viewport; CSS for idle loops (letter float, twinkles), GSAP for everything scroll-driven. `gsap.matchMedia()`: a desktop timeline, a shorter mobile timeline with fewer/lighter layers, and no pin or scrub under `prefers-reduced-motion` (static hero, then the list).
+- **Assets:** `src/assets/` holds optimized WebP: `sky.webp` (from `asset/sky-background.png`), `sonya/{S,o,n,y,a}.webp`, `clouds-far.webp`, `clouds-near.webp`, `cloud-mist.webp` (whiteout layer), and `projects/*.webp` (≤1200px). Letter placement lives in `src/data/chromeLetters.ts`. Originals stay in `asset/`. `sonya.png` had a baked-in checkerboard, so the letters were cut out and split in the mockup (scratch script); swap in a real transparent export if one becomes available.
+- **Tests:** minimal; no component/snapshot tests. Check with `npm run build` and by running the app.
+- **Deploy:** Netlify (static `dist/`).
 
 ## Implementation steps
-1. [ ] Scaffold Vite/React/TS; theme variables, fonts, theme toggle + no-flash script
-2. [ ] Layout: hero text (name, bio, links) + poster-frame microtype, responsive
-2b. [ ] Name animation: per-letter CSS float + desktop JS cursor swell (`LiquidName` component)
-3. [ ] Projects: data file, images, liquid row cards with stack icons, hover effect
-3b. [ ] Floating social dock (IntersectionObserver + CSS transition)
-4. [ ] WaveCanvas: static shader → mouse ripple → touch/idle, reduced motion, pause, fallback
-5. [ ] Polish: accent lines, focus states, meta/OG tags, favicon, mobile check
-6. [ ] Deploy to Netlify
+1. [x] Scaffold Vite/React/TS + Tailwind v4; tokens, fonts; optimized assets into `src/assets/` (1.3 MB total)
+2. [x] Static framed hero: sky panel, serif, `ChromeName` (per-letter float), tagline, experience, links. Responsive.
+3. [x] Continuous sky + Work (data, glass cards with stack icons, placeholder outcomes), simple footer
+4. [x] GSAP timeline: frame opens → approach → through the clouds → whiteout → release; mobile variant; reduced-motion fallback
+   - One pinned, scrubbed (`scrub: 1`) timeline in `SkyScene`; the scene stays pinned for 2.2 screens (desktop) / 1.7 (mobile). `pinSpacing: false` + a spacer that is only sized while animating, so the Work section rises over the scene during the last screen, starting at timeline time 5.5 (while the near clouds are still passing). A 35dvh white gradient above Work (`data-work-fade`, shown only while the scene is active) keeps that edge misty; the whiteout finishes behind the rising list.
+   - The sky is a full-screen layer clipped to the frame with `clip-path`; the frame margins are CSS variables (`--frame-top/-x/-bottom`), so the static hero is exact without JS, and GSAP opens the clip from the measured panel rect.
+   - Near clouds, mist and a `sky-50` wash sit in front of the name; the wash matches the top of the Work section, so the pin releases with no seam (Work overlaps the scene by 1px to hide a compositor hairline).
+   - Reduced motion: no pin or scrub, static hero, then the list.
+5. [x] `SocialDock` (appears once Work is in view), focus states, meta/OG tags, favicon
+   - Dock: GSAP ScrollTrigger on `#work` (`top 75%` → end of page) toggles a glass pill; icons only on phones; instant under reduced motion.
+   - Focus: cobalt `:focus-visible` ring verified with real Tab presses (header links → cards → dock).
+   - `public/`: `favicon.png` (chrome S), `apple-touch-icon.png` (S on sky), `og.jpg` (1200×630 hero). Make `og:image` absolute once the domain is known.
+   - No in-page anchors needed beyond "Back to top" (no nav by design).
+6. [ ] Check desktop/mobile, keyboard, reduced motion, scroll performance, asset sizes; deploy to Netlify
 
-## Open content (needed from you)
-- Bio / one-liner
-- ~~Name display~~ → "Sonya Kim"
-- Links: LinkedIn https://www.linkedin.com/in/sonya-kim · GitHub https://github.com/sonyakim-dev · email / resume? (TBD)
-- One-line description per project (optional; cards currently have none)
+## Open content (needed from Sonya)
+- One-line outcome per project
 
 ## Later / not now
+- Blender/Spline re-render of the chrome letters (drop-in replacement for the 5 images)
+- Short intro (fade from white, letterbox opening) before the hero settles
+- Lenis smooth scrolling, only if GSAP scrub feels steppy on wheels/trackpads
 - Project filtering, detail pages, CMS/blog, analytics
-- Image optimization (webp/responsive sizes) if the old images are heavy

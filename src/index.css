@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+
+/* Design tokens → Tailwind utilities (bg-paper, text-fg, border-line, font-display, …) */
+@theme {
+  --font-display: 'Bodoni Moda Variable', Didot, serif;
+  --font-sans: 'Geist Variable', system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --color-paper: #eeefed;
+  --color-fg: #111317;
+  --color-muted: #5b616a;
+  --color-soft: #525d72;
+  --color-line: rgb(17 19 23 / 0.18);
+  --color-accent: #4657d6;
+
+  /* sky sampled from asset/sky-background.png, used for the continuous page background */
+  --color-sky-50: #f7fafc;
+  --color-sky-100: #e6f0f8;
+  --color-sky-200: #cde1f1;
+  --color-sky-300: #b1d2ea;
+  --color-sky-400: #a0c8e6;
+  --color-haze: #c8dbe8;
+
+  --color-cloud: #ffffff;
+
+  --color-glass: rgb(255 255 255 / 0.5);
+  --color-glass-edge: rgb(255 255 255 / 0.95);
+  --shadow-glass: 0 30px 60px -30px rgb(38 58 82 / 0.35);
+}
+
+/* Liquid glass surface: nav, cards, dock */
+@utility liquid {
+  background-color: var(--color-glass);
+  border: 1px solid var(--color-glass-edge);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    var(--shadow-glass);
+  backdrop-filter: blur(22px) saturate(160%);
+}
+
+/* Small uppercase mono labels (poster microtype) */
+@utility microtype {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* One continuous sky behind everything after the hero (no seam, no background swap) */
+@utility sky-continuum {
+  background: linear-gradient(
+    180deg,
+    var(--color-sky-50) 0%,
+    var(--color-sky-100) 5%,
+    var(--color-sky-200) 12%,
+    var(--color-sky-300) 26%,
+    var(--color-sky-400) 55%,
+    var(--color-sky-300) 82%,
+    var(--color-haze) 100%
+  );
+}
+
+/* Rounded outline tag, e.g. "SK—26" */
+@utility tag {
+  border: 1px solid currentColor;
+  border-radius: 9999px;
+  padding: 3px 12px;
+}
+
+/*
+ * Chrome letters drift like they're floating on air: an up/down bob and a small tilt,
+ * each with its own period per letter (--bob-t, --sway-t), so the letters never line up.
+ * Amplitude is in cqw of the name container, so the motion scales with the logo size.
+ */
+@keyframes bob {
+  from {
+    translate: 0 calc(var(--amp) * 1cqw);
+  }
+  to {
+    translate: 0 calc(var(--amp) * -1cqw);
+  }
+}
+
+@keyframes sway {
+  from {
+    rotate: calc(var(--rot) * -1deg);
+  }
+  to {
+    rotate: calc(var(--rot) * 1deg);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    scale: 0.25;
+    opacity: 0;
+  }
+  45% {
+    scale: 1;
+    opacity: 1;
+  }
+  60% {
+    scale: 0.9;
+    opacity: 0.9;
+  }
+}
+
+@utility float-letter {
+  transform-origin: 50% 60%;
+  animation:
+    bob var(--bob-t) ease-in-out var(--delay) infinite alternate,
+    sway var(--sway-t) ease-in-out var(--delay) infinite alternate;
+}
+
+/* "Scroll to enter" cue drifts down and back */
+@keyframes nudge {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 6px;
+  }
+}
+
+@utility nudge {
+  animation: nudge 1.4s ease-in-out infinite alternate;
+}
+
+/* Credits-style ticker: slides right → left by one run (the track holds two identical runs) */
+@keyframes marquee {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -50% 0;
+  }
+}
+
+@utility marquee {
+  animation: marquee 45s linear infinite;
+}
+
+@utility twinkle {
+  animation: twinkle 3.4s ease-in-out infinite;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+}
