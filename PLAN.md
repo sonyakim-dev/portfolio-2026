@@ -15,7 +15,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 ## Experience (scroll timeline of the pinned hero)
 | Stage | Progress | What happens |
 |---|---|---|
-| 01 Hero | 0% | Framed sky panel on paper with poster microtype. Italic serif "SOFTWARE ENGINEER" behind the chrome mark; each letter bobs and sways on its own rhythm (CSS). "⌄ Scroll to enter" cue at the panel's bottom: a real `#experience` link; clicking glides through the whole sequence to Experience (GSAP ScrollToPlugin, 2.2s, instant under reduced motion). |
+| 01 Hero | 0% | Framed sky panel on paper with poster microtype. Italic serif "SOFTWARE ENGINEER" behind the chrome mark; each letter bobs and sways on its own rhythm (CSS). "⌄ Scroll to enter" cue at the panel's bottom: a real `#experience` link; clicking scrolls to Experience (native smooth scrolling on mobile/touch to avoid GSAP auto-kill during browser viewport changes; GSAP ScrollToPlugin, 2.2s on desktop; instant under reduced motion). |
 | 02 Frame opens | ≈15% | The panel grows edge to edge (`clip-path` inset → 0). Poster type and the cue fade. |
 | 03 Approach | ≈40% | The mark scales up slightly; far and near cloud layers rise at different speeds (parallax). |
 | 04 Through the clouds | ≈65% | The near layer passes in front of the mark; the mark softens and fades behind it. |
@@ -30,6 +30,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - **Sky:** `assets/sky-background.png` (→ `src/assets/sky.webp`) for the hero. The page below continues one sky gradient sampled from it (`#f7fafc` → `#b1d2ea` → `#a0c8e6` → `#c8dbe8`) behind the Work section and footer.
 - **Clouds:** `clouds-far` and `clouds-near` transparent layers for parallax and occlusion; `cloud-mist` scaled up plus a white overlay for the whiteout.
 - Tech chips use half the original glass tint (25% white), a faint border, and fully opaque labels/icons.
+- Project images show full color on mobile and touch devices. On screens ≥640px with a fine pointer and hover, images start grayscale and reveal color on card hover or keyboard focus; the gentle hover zoom respects reduced motion.
 - **No top nav** (only one section; the scroll cue and the social dock cover navigation).
 - **Cards and dock:** liquid glass (translucent white, backdrop blur, luminous edge, soft shadow); text stays legible over bright areas via card tint.
   - Cards use a dedicated `liquid-card` surface: subtle directional reflections (13–25% white), soft rim lighting, 10px backdrop blur, near-neutral saturation, and faint depth shadows. The border uses separate edge colors so an extra gradient does not compound opacity across the center. Experience inset panels use 10% white. Distant clouds sit behind both content sections. Card lift is limited to fine pointers with motion enabled; browsers without backdrop blur receive a solid sky tint. Dock keeps its original glass treatment.
@@ -87,3 +88,5 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - Short intro (fade from white, letterbox opening) before the hero settles
 - Lenis smooth scrolling, only if GSAP scrub feels steppy on wheels/trackpads
 - Project filtering, detail pages, CMS/blog, analytics
+
+- Tech chips retain their glass styling but no longer lift independently on hover.

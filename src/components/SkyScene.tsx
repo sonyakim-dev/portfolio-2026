@@ -146,14 +146,20 @@ export function SkyScene() {
     { scope: root },
   );
 
-  // "Scroll to enter": glide down through the whole cloud sequence to Experience (instant under reduced motion).
+  // "Scroll to enter": native scrolling on phones avoids ScrollToPlugin auto-kill
+  // when browser chrome changes the viewport; desktop keeps the longer cloud passage.
   // It stays a real #experience link, so it also works without JavaScript and from the keyboard.
   const enter = contextSafe((e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     // pass the element, not a selector: contextSafe scopes selector text to this hero, and #experience is outside it
     const target = document.getElementById("experience");
     if (!target) return;
+    e.preventDefault();
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobile = window.matchMedia("(max-width: 639px), (pointer: coarse)").matches;
+    if (mobile || reduce) {
+      target.scrollIntoView({ behavior: reduce ? "instant" : "smooth", block: "start" });
+      return;
+    }
     gsap.to(window, { scrollTo: { y: target, autoKill: true }, duration: reduce ? 0 : 2.2, ease: "power2.inOut" });
   });
 

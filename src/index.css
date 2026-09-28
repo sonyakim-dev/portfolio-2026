@@ -77,6 +77,26 @@
   }
 }
 
+/* Touch screens show color immediately; mouse and keyboard reveal it on interaction. */
+@utility project-image {
+  @media (min-width: 640px) and (hover: hover) and (pointer: fine) {
+    filter: grayscale(1);
+
+    .group:hover &,
+    .group:focus-visible & {
+      filter: grayscale(0);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 700ms;
+
+      .group:hover & {
+        transform: scale(1.015);
+      }
+    }
+  }
+}
+
 /* Small uppercase mono labels (poster microtype) */
 @utility microtype {
   font-family: var(--font-mono);

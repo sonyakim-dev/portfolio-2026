@@ -19,7 +19,7 @@ export function ProjectCard({ project }: { project: Project }) {
           src={image}
           alt=""
           loading="lazy"
-          className="size-full object-cover grayscale transition duration-700 group-hover:scale-[1.015] group-hover:grayscale-0"
+          className="project-image size-full object-cover"
         />
       </div>
 
