@@ -13,6 +13,7 @@ export type HeroCredit = {
 export const HERO_EXPERIENCE: HeroCredit[] = [
   { role: "Software Engineer", company: "?", year: "2026 - NOW" },
   { role: "Software Engineer", company: "Snap", year: "2025 - 2026" },
+  { role: "Linguistics and Computer Science", company: "UCLA", year: "2023 - 2025" },
   { role: "Software Engineer Intern", company: "Snap", year: "2024" },
   { role: "Software Engineer Intern", company: "Snap", year: "2023" },
 ];

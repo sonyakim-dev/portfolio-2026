@@ -191,7 +191,9 @@ export function SkyScene() {
             <HeaderLink {...linkedin} />
             <ArrowUpRight aria-hidden="true" strokeWidth={1.5} className="hidden size-3.5 sm:block" />
           </span>
-          <span className="hidden sm:inline">Welcome to my world</span>
+          <span className="hidden sm:inline">
+            Welcome<span className="hidden md:inline"> to my world</span>
+          </span>
           <span className="flex items-center gap-2.5">
             <ArrowDownLeft aria-hidden="true" strokeWidth={1.5} className="hidden size-3.5 sm:block" />
             <HeaderLink {...github} />

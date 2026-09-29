@@ -15,20 +15,17 @@ export function ProjectCard({ project }: { project: Project }) {
       className="group liquid-card card"
     >
       <div className="aspect-video overflow-hidden rounded-2xl bg-line md:aspect-16/10 md:self-center">
-        <img
-          src={image}
-          alt=""
-          loading="lazy"
-          className="project-image size-full object-cover"
-        />
+        <img src={image} alt="" loading="lazy" className="project-image size-full object-cover" />
       </div>
 
       <div className="card-body">
         <div className="flex items-center justify-between">
           <span className="microtype text-[11px] text-muted">{category}</span>
-          <span className="liquid-card grid size-8 place-items-center rounded-full md:size-9">
+          {url && (
+            // <span className="liquid-card grid size-8 place-items-center rounded-full md:size-9">
             <ArrowUpRight aria-hidden="true" strokeWidth={1.6} className="size-3.5 md:size-4" />
-          </span>
+            // </span>
+          )}
         </div>
 
         <div className="space-y-1.5">

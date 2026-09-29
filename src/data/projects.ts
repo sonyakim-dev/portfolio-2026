@@ -15,7 +15,7 @@ export type Project = {
   description?: string;
   category: string;
   tech: TechKey[];
-  url: string;
+  url?: string;
   image: string;
 };
 

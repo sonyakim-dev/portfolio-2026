@@ -5,6 +5,7 @@ Mockup (storyboard + desktop + mobile): https://claude.ai/artifact/9w6GzV4DSVRmB
 This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 
 ## Requirements
+
 - One-page portfolio, responsive and mobile-friendly. Vite + React + TypeScript.
 - Hero: floating chrome "Sonya" over a sky and cloud horizon; tagline, experience, LinkedIn/GitHub.
 - Scroll: the frame opens → approach → through the clouds → whiteout → selected work. Tracks scroll in both directions.
@@ -13,16 +14,18 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - Light only (no dark mode).
 
 ## Experience (scroll timeline of the pinned hero)
-| Stage | Progress | What happens |
-|---|---|---|
-| 01 Hero | 0% | Framed sky panel on paper with poster microtype. Italic serif "SOFTWARE ENGINEER" behind the chrome mark; each letter bobs and sways on its own rhythm (CSS). "⌄ Scroll to enter" cue at the panel's bottom: a real `#experience` link; clicking scrolls to Experience (native smooth scrolling on mobile/touch to avoid GSAP auto-kill during browser viewport changes; GSAP ScrollToPlugin, 2.2s on desktop; instant under reduced motion). |
-| 02 Frame opens | ≈15% | The panel grows edge to edge (`clip-path` inset → 0). Poster type and the cue fade. |
-| 03 Approach | ≈40% | The mark scales up slightly; far and near cloud layers rise at different speeds (parallax). |
-| 04 Through the clouds | ≈65% | The near layer passes in front of the mark; the mark softens and fades behind it. |
-| 05 Whiteout | ≈85% | The dense foreground fills the view in a brief soft white. |
-| 06 Selected work | 100% | White clears to the same sky; the pin releases and the work section scrolls normally. The dock slides in. |
+
+| Stage                 | Progress | What happens                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| --------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 01 Hero               | 0%       | Framed sky panel on paper with poster microtype. Italic serif "SOFTWARE ENGINEER" behind the chrome mark; each letter bobs and sways on its own rhythm (CSS). "⌄ Scroll to enter" cue at the panel's bottom: a real `#experience` link; clicking scrolls to Experience (native smooth scrolling on mobile/touch to avoid GSAP auto-kill during browser viewport changes; GSAP ScrollToPlugin, 2.2s on desktop; instant under reduced motion). |
+| 02 Frame opens        | ≈15%     | The panel grows edge to edge (`clip-path` inset → 0). Poster type and the cue fade.                                                                                                                                                                                                                                                                                                                                                           |
+| 03 Approach           | ≈40%     | The mark scales up slightly; far and near cloud layers rise at different speeds (parallax).                                                                                                                                                                                                                                                                                                                                                   |
+| 04 Through the clouds | ≈65%     | The near layer passes in front of the mark; the mark softens and fades behind it.                                                                                                                                                                                                                                                                                                                                                             |
+| 05 Whiteout           | ≈85%     | The dense foreground fills the view in a brief soft white.                                                                                                                                                                                                                                                                                                                                                                                    |
+| 06 Selected work      | 100%     | White clears to the same sky; the pin releases and the work section scrolls normally. The dock slides in.                                                                                                                                                                                                                                                                                                                                     |
 
 ## Visual system
+
 - **Palette:** powder blue, cloud white, cool silver, dark blue-gray text (`#525D72` for soft labels). Paper `#eeefed` around the framed hero. Accent: soft cobalt `#4657d6`, used sparingly (tagline `+`, hovers, focus rings).
 - **Ultra-wide:** the framed panel is capped at 1680px (frame margins grow) and the logo at 1100px; the frame still opens to full width on scroll.
 - **Type:** Bodoni Moda italic (poster serif only) · Geist (body; semibold project titles) · Geist Mono (uppercase microtype).
@@ -36,6 +39,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
   - Cards use a dedicated `liquid-card` surface: subtle directional reflections (13–25% white), soft rim lighting, 10px backdrop blur, near-neutral saturation, and faint depth shadows. The border uses separate edge colors so an extra gradient does not compound opacity across the center. Experience inset panels use 10% white. Distant clouds sit behind both content sections. Card lift is limited to fine pointers with motion enabled; browsers without backdrop blur receive a solid sky tint. Dock keeps its original glass treatment.
 
 ## Content
+
 - Tagline: "Engineering + Linguistics + Art". Header microtype (desktop): "Sonya Kim · [LinkedIn] ↗ · Welcome to my world · ↙ [GitHub] · Portfolio" — links are solid black pills that invert on hover; mobile: "Sonya Kim" + round icon-only LinkedIn/GitHub buttons on the right.
 - Experience: a single credits-style ticker along the bottom of the frame, drifting right → left forever (CSS `marquee`, stopped under reduced motion); role **bold**, year in Bodoni italic. The bottom strip matches the header height, so the frame is symmetric.
 - Experience lives in `src/data/experiences.ts` as two independent lists: `HERO_EXPERIENCE` (short credits for the hero ticker: role, company, year) and `EXPERIENCES` (detailed cards in the **Experience** section before Selected work: role, company, period, optional team, location, summary, highlights, tech). Experience cards share the project card's shell and grid, with an inset panel (company, team, period, location) in place of the image and no link. Jobs and projects are separate.
@@ -44,6 +48,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - Projects: the 10 from the old site (`src/data/projects.ts`); stacks from each repo's package.json / GitHub languages; Target VR = Unity + C#; the craft pieces = "Handcraft". simple-icons removed the LinkedIn, Photoshop, C#, AWS and Java (coffee cup) logos at the brands' request, so those marks are kept locally in `src/icons/` (Java from simple-icons v6; the OpenJDK icon is the Duke mascot, not the cup). One-line outcomes are **placeholders** until Sonya writes them; never invent claims.
 
 ## Architecture
+
 - Vite + React + TS. No UI kit, router or state library.
 - **Components** (`src/components/`), grouped by page region: `hero/` (SkyScene, ChromeName, Tagline, ExperienceTicker), `sections/` (Experience and Project sections, their cards, SectionHeader), `ui/` (BrandIcon, TechChip/TechList, shared across regions); page-level `Footer` and `SocialDock` stay at the top. GSAP setup lives in `src/lib/gsap.ts`.
 - **Styling:** Tailwind CSS v4 (`@tailwindcss/vite`), config in `src/index.css`: tokens in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky colors), fonts (`font-display`, `font-sans`, `font-mono`), shared `@utility` recipes (`liquid`, `liquid-card`, `microtype`, `card` / `card-body` / `card-title` for the project and experience cards), keyframes (`bob`, `sway`, `twinkle`).
@@ -62,6 +67,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - **Deploy:** Netlify (static `dist/`).
 
 ## Implementation steps
+
 1. [x] Scaffold Vite/React/TS + Tailwind v4; tokens, fonts; optimized assets into `src/assets/` (1.3 MB total)
 2. [x] Static framed hero: sky panel, serif, `ChromeName` (per-letter float), tagline, experience, links. Responsive.
 3. [x] Continuous sky + Work (data, glass cards with stack icons, placeholder outcomes), simple footer
@@ -82,9 +88,11 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
    - Remaining: make `og:image` absolute once the site URL is confirmed; feel-check scroll pacing on real devices.
 
 ## Open content (needed from Sonya)
+
 - One-line outcome per project
 
 ## Later / not now
+
 - Blender/Spline re-render of the chrome letters (drop-in replacement for the 5 images)
 - Short intro (fade from white, letterbox opening) before the hero settles
 - Lenis smooth scrolling, only if GSAP scrub feels steppy on wheels/trackpads
