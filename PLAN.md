@@ -46,11 +46,12 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - Bio: not shown anywhere since About was removed.
 - Links: LinkedIn https://www.linkedin.com/in/sonya-kim · GitHub https://github.com/sonyakim-dev · email TBD.
 - Projects: the 10 from the old site (`src/data/projects.ts`); stacks from each repo's package.json / GitHub languages; Target VR = Unity + C#; the craft pieces = "Handcraft". simple-icons removed the LinkedIn, Photoshop, C#, AWS and Java (coffee cup) logos at the brands' request, so those marks are kept locally in `src/icons/` (Java from simple-icons v6; the OpenJDK icon is the Duke mascot, not the cup). One-line outcomes are **placeholders** until Sonya writes them; never invent claims.
+- Project galleries: Target VR, forme.Love, Promotion Design and Craft Trend Fair were copied from the old Webflow pages, and Cosmos and Fantasy from saved copies of their Squarespace pages, into `src/data/galleries.ts` (text, facts, logos and images/video in the original order; originals in `assets/projects/<name>/`). Their cards are buttons (a full-size `<button>` stretched over the `<article>`, lucide `PictureInPicture2` corner icon; no link or URL hash) that open `ProjectGalleryDialog`: a native `<dialog>` sheet (85% sky-50 glass, smaller type than the cards) over a blurred sky scrim, mounted only while open, GSAP drift in/out (instant under reduced motion); Esc, the close button or the scrim close it, and page scroll is locked via `html:has(dialog[open])`. Target VR embeds its YouTube video (youtube-nocookie) instead of a local file. Cards with neither a gallery nor a URL render as static cards.
 
 ## Architecture
 
 - Vite + React + TS. No UI kit, router or state library.
-- **Components** (`src/components/`), grouped by page region: `hero/` (SkyScene, ChromeName, Tagline, ExperienceTicker), `sections/` (Experience and Project sections, their cards, SectionHeader), `ui/` (BrandIcon, TechChip/TechList, shared across regions); page-level `Footer` and `SocialDock` stay at the top. GSAP setup lives in `src/lib/gsap.ts`.
+- **Components** (`src/components/`), grouped by page region: `hero/` (SkyScene, ChromeName, Tagline, ExperienceTicker), `sections/` (Experience and Project sections, their cards, SectionHeader), `ui/` (Card, BrandIcon, TechChip/TechList, shared across regions; `Card` is the glass shell for project and experience cards: media slot, body, optional top-right icon, `<a>` with `href`, `<article>` + stretched `<button>` with `onClick`, else a static `<article>`); page-level `Footer` and `SocialDock` stay at the top. GSAP setup lives in `src/lib/gsap.ts`.
 - **Styling:** Tailwind CSS v4 (`@tailwindcss/vite`), config in `src/index.css`: tokens in `@theme` (`bg-paper`, `text-fg`, `text-muted`, `border-line`, `text-accent`, sky colors), fonts (`font-display`, `font-sans`, `font-mono`), shared `@utility` recipes (`liquid`, `liquid-card`, `microtype`, `card` / `card-body` / `card-title` for the project and experience cards), keyframes (`bob`, `sway`, `twinkle`).
 - **Libraries:**
   | Package | Used for |
@@ -62,7 +63,7 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
   | `@fontsource-variable/{bodoni-moda,geist,geist-mono}` | Self-hosted fonts |
 - **Components:** `SkyScene` (framed hero + pinned timeline + cloud layers), `ChromeName` (5 letter images with CSS bob/sway), `Tagline`, `SocialPill`, `ExperienceSection` (+ `ExperienceCard`), `ProjectSection` + `ProjectCard`, `SocialDock`.
 - **Motion rules:** animate only `transform`, `opacity` and `clip-path`; `100dvh` for the pinned viewport; CSS for idle loops (letter float, twinkles), GSAP for everything scroll-driven. `gsap.matchMedia()`: a desktop timeline, a shorter mobile timeline with fewer/lighter layers, and no pin or scrub under `prefers-reduced-motion` (static hero, then the list).
-- **Assets:** `src/assets/` holds optimized WebP: `sky.webp` (from `assets/sky-background.png`), `sonya/{S,o,n,y,a}.webp`, `clouds-far.webp`, `clouds-near.webp`, `cloud-mist.webp` (whiteout layer), and `projects/*.webp` (≤1200px). Letter placement lives in `src/data/chromeLetters.ts`. Originals stay in `assets/`. The chrome letters come from the transparent v2 cutouts in `assets/sonya-letters-v2/`, each registered onto the original `assets/sonya.png` wordmark (best overlap over scale × position) so the logo keeps its composition; exported at 2× the logo's max width.
+- **Assets:** `src/assets/` holds optimized WebP: `sky.webp` (from `assets/sky-background.png`), `sonya/{S,o,n,y,a}.webp`, `clouds-far.webp`, `clouds-near.webp`, `cloud-mist.webp` (whiteout layer), and `projects/*.webp` (≤1200px); gallery images in `projects/<name>/*.webp` (≤1600px wide, logos ≤600px) plus the forme.Love MP4. Letter placement lives in `src/data/chromeLetters.ts`. Originals stay in `assets/`. The chrome letters come from the transparent v2 cutouts in `assets/sonya-letters-v2/`, each registered onto the original `assets/sonya.png` wordmark (best overlap over scale × position) so the logo keeps its composition; exported at 2× the logo's max width.
 - **Tests:** minimal; no component/snapshot tests. Check with `npm run build` and by running the app.
 - **Deploy:** Netlify (static `dist/`).
 
@@ -96,6 +97,6 @@ This file merges and supersedes `assets/PLAN.md` (kept only as a reference).
 - Blender/Spline re-render of the chrome letters (drop-in replacement for the 5 images)
 - Short intro (fade from white, letterbox opening) before the hero settles
 - Lenis smooth scrolling, only if GSAP scrub feels steppy on wheels/trackpads
-- Project filtering, detail pages, CMS/blog, analytics
+- Project filtering, full detail pages (routes), CMS/blog, analytics
 
 - Tech chips retain their glass styling but no longer lift independently on hover.

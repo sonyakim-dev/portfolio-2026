@@ -98,7 +98,8 @@
     filter: grayscale(1);
 
     .group:hover &,
-    .group:focus-visible & {
+    .group:focus-visible &,
+    .group:has(:focus-visible) & {
       filter: grayscale(0);
     }
 
@@ -216,6 +217,12 @@
     background-color: var(--color-paper);
     color: var(--color-fg);
     -webkit-font-smoothing: antialiased;
+    /* keep the scrollbar's space when a gallery dialog locks scrolling, so the page doesn't shift */
+    scrollbar-gutter: stable;
+
+    &:has(dialog[open]) {
+      overflow: hidden;
+    }
   }
 
   :focus-visible {

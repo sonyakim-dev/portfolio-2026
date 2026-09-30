@@ -8,6 +8,15 @@ import promotionDesign from "@/assets/projects/promotion-design.webp";
 import targetVr from "@/assets/projects/target-vr.webp";
 import todayIsAHoliday from "@/assets/projects/today-is-a-holiday.webp";
 import youBelong from "@/assets/projects/youbelong.webp";
+import {
+  COSMOS_GALLERY,
+  CRAFT_TREND_FAIR_GALLERY,
+  FANTASY_GALLERY,
+  FORME_LOVE_GALLERY,
+  PROMOTION_DESIGN_GALLERY,
+  TARGET_VR_GALLERY,
+  type ProjectGallery,
+} from "./galleries";
 import type { TechKey } from "./tech";
 
 export type Project = {
@@ -15,8 +24,10 @@ export type Project = {
   description?: string;
   category: string;
   tech: TechKey[];
-  url?: string;
   image: string;
+  url?: string;
+  /** Copied project page, opened in a dialog instead of an external link. */
+  gallery?: ProjectGallery;
 };
 
 // Stacks come from each repo's package.json / GitHub languages; Target VR = Unity + C#.
@@ -56,28 +67,28 @@ export const PROJECTS: Project[] = [
     title: "Target VR",
     category: "Game Dev",
     tech: ["csharp", "unity"],
-    url: "https://sonyakim.webflow.io/project/targetvr",
+    gallery: TARGET_VR_GALLERY,
     image: targetVr,
   },
   {
     title: "forme.Love",
     category: "Web Design",
     tech: ["shopify", "photoshop"],
-    url: "https://sonyakim.webflow.io/project/formelove",
+    gallery: FORME_LOVE_GALLERY,
     image: formeLove,
   },
   {
     title: "Promotion Design",
     category: "Visual Design",
     tech: ["photoshop"],
-    url: "https://sonyakim.webflow.io/project/dna",
+    gallery: PROMOTION_DESIGN_GALLERY,
     image: promotionDesign,
   },
   {
     title: "Craft Trend Fair",
     category: "Jewelry Design",
     tech: ["craft"],
-    url: "https://sonyakim.webflow.io/project/crafttrendfair",
+    gallery: CRAFT_TREND_FAIR_GALLERY,
     image: craftTrendFair,
     description: "Twenty Question, Twenty Answers — I live up my life today.",
   },
@@ -85,8 +96,8 @@ export const PROJECTS: Project[] = [
     title: "Cosmos",
     category: "Living Design",
     tech: ["craft"],
-    url: "https://sonyakim.squarespace.com/projects/living-design",
     image: cosmos,
+    gallery: COSMOS_GALLERY,
     description:
       "Above my head floats the universe of a girl who once looked up at the sky and dreamed of going to space.",
   },
@@ -94,8 +105,8 @@ export const PROJECTS: Project[] = [
     title: "Fantasy",
     category: "Jewelry Design",
     tech: ["craft"],
-    url: "https://sonyakim.squarespace.com/projects/jewelry-design",
     image: fantasy,
+    gallery: FANTASY_GALLERY,
     description:
       "Pleasure is one of humanity's most basic and instinctive desires. And money may be the most powerful drug of all — one that promises pleasure.",
   },
