@@ -36,7 +36,6 @@ import fantasyReferenceLasVegas from "@/assets/projects/fantasy/reference-las-ve
 import fantasyReferencePinball from "@/assets/projects/fantasy/reference-pinball.webp";
 import fantasyStyled1 from "@/assets/projects/fantasy/styled-1.webp";
 import fantasyStyled2 from "@/assets/projects/fantasy/styled-2.webp";
-// import formeInstagram from "@/assets/projects/forme-love/instagram.webp";
 import formeLogo from "@/assets/projects/forme-love/logo.webp";
 import formeVideoPoster from "@/assets/projects/forme-love/video-poster.webp";
 import formeVideo from "@/assets/projects/forme-love/video.mp4";
@@ -121,10 +120,6 @@ export const FORME_LOVE_GALLERY: ProjectGallery = {
         ),
       ],
     },
-    // {
-    //   heading: "Instagram & Facebook Marketing",
-    //   media: [image(formeInstagram, "forme.Love Instagram feed on a phone, surrounded by product and giveaway posts", 1366, 768)],
-    // },
   ],
 };
 

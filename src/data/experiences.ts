@@ -11,7 +11,7 @@ export type HeroCredit = {
 };
 
 export const HERO_EXPERIENCE: HeroCredit[] = [
-  { role: "Software Engineer", company: "?", year: "2026 - NOW" },
+  { role: "Software Engineer", company: "Linktree", year: "2026 - NOW" },
   { role: "Software Engineer", company: "Snap", year: "2025 - 2026" },
   { role: "Linguistics and Computer Science", company: "UCLA", year: "2023 - 2025" },
   { role: "Software Engineer Intern", company: "Snap", year: "2024" },
@@ -34,8 +34,8 @@ export type Experience = {
 export const EXPERIENCES: Experience[] = [
   {
     role: "Software Engineer",
-    company: "?",
-    period: "2026 - Current",
+    company: "Linktree",
+    period: "Oct 2026 - Current",
     location: "Remote",
     highlights: ["Ready to go. Coming soon."],
   },
