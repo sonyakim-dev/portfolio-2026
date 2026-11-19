@@ -36,7 +36,8 @@ export const EXPERIENCES: Experience[] = [
     role: "Software Engineer",
     company: "Linktree",
     period: "Oct 2026 - Current",
-    location: "Remote",
+    team: "Growth Revenue Expansion",
+    location: "Culver City, CA",
     highlights: ["Ready to go. Coming soon."],
   },
   {
